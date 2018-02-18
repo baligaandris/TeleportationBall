@@ -21,12 +21,16 @@ public class UIManager2 : MonoBehaviour {
     {
 
     }
-
+	// Add score and determine when player 2 wins
     public void IncrementScore()
     {
 
         score++;
         scoreText.text = "" + score;
+		if (score >= 5) 
+		{
+			Application.LoadLevel ("Player2Win");
+		}
 
     }
 

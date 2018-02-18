@@ -123,8 +123,8 @@ GameObject:
   - component: {fileID: 84744445}
   - component: {fileID: 84744444}
   m_Layer: 0
-  m_Name: SliderHandleSprite (1)
-  m_TagString: Untagged
+  m_Name: SliderHandleSprite
+  m_TagString: ui2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1555,7 +1555,7 @@ GameObject:
   - component: {fileID: 2102088262}
   m_Layer: 0
   m_Name: SliderHandleSprite
-  m_TagString: Untagged
+  m_TagString: ui
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
