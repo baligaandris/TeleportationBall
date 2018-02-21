@@ -26,9 +26,14 @@ public class Ball : MonoBehaviour
 
         {
 
-            transform.position = defaultPos;
+            
 
         }
 
+    }
+    public void ResetPosition() {
+        transform.position = defaultPos;
+        GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity*0;
+        GetComponent<Rigidbody2D>().angularVelocity = GetComponent<Rigidbody2D>().angularVelocity * 0;
     }
 }

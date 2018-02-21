@@ -9,6 +9,9 @@ TagManager:
   - Goal
   - ui
   - ui2
+  - ball
+  - MatchManager
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -18,8 +21,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Bullet
+  - Goal
   - 
   - 
   - 

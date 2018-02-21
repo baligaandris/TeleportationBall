@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour {
     public float fireSpeed;
     private bool canFire1 = true;
     private bool canFire2 = true;
-
+    private Vector3 defaultPos;
 
     public float deadzone = 0.25f;
 
@@ -25,9 +25,10 @@ public class PlayerMovement : MonoBehaviour {
     private string f2;
 
     // Use this for initialization
-    void Start () {
+    void Start() {
+        defaultPos = transform.position;
         rb = GetComponent<Rigidbody2D>(); //save rigidbody for later use
-        if (gameObject.tag=="Player") //check if the player that this is attached to is p1 or p2 and assign controls based on that
+        if (gameObject.tag == "Player") //check if the player that this is attached to is p1 or p2 and assign controls based on that
         {
             h = "Horizontal";
             v = "Vertical";
@@ -46,20 +47,20 @@ public class PlayerMovement : MonoBehaviour {
             f2 = "Fire22";
         }
 
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update() {
         //get input for movement
-        float xAxis = -Input.GetAxis(h); 
+        float xAxis = -Input.GetAxis(h);
         float yAxis = -Input.GetAxis(v);
         Accellerate(xAxis, yAxis); //call the movement function
 
-        if (Input.GetAxis(f1)!=0) //get input for shockwave attack from right trigger
+        if (Input.GetAxis(f1) != 0) //get input for shockwave attack from right trigger
         {
             if (canFire1) // since the trigger doesn't have a "getbuttondown" because it is an axis this bool takes care of only fireing it once when the trigger is pulled
             {
-                if (Input.GetAxis(hAim)!= 0 || Input.GetAxis(vAim)!=0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
+                if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
                 {
                     fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)); //get input for aiming
                     //print(fireVector);
@@ -74,7 +75,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             canFire1 = true; //when the player releases the trigger they get back the ability to shoot
         }
-        if (Input.GetAxis(f2)!=0) //same thing for the other projectile, you get the idea
+        if (Input.GetAxis(f2) != 0) //same thing for the other projectile, you get the idea
         {
             if (canFire2)
             {
@@ -99,8 +100,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void Accellerate(float y, float x) //this is the movement of the player
     {
-        Vector2 force = new Vector2(0, 0); 
-        if (new Vector2 (x,y).magnitude > deadzone) // there is a deadzone on the controllers joysticks, if the input is in the dead zone, we ignore it
+        Vector2 force = new Vector2(0, 0);
+        if (new Vector2(x, y).magnitude > deadzone) // there is a deadzone on the controllers joysticks, if the input is in the dead zone, we ignore it
         {
             force = (transform.up * y * accelleration) + (transform.right * x * accelleration); //we have physics based movement, here we calculate the force to be applied to the player
         }
@@ -115,5 +116,8 @@ public class PlayerMovement : MonoBehaviour {
 
         rb.velocity = new Vector2(x, y);
     }
-
+    public void ResetPosition (){
+        transform.position = defaultPos;
+        GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity * 0;
+    }
 }
