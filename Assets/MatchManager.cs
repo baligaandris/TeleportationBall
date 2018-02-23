@@ -8,8 +8,10 @@ public class MatchManager : MonoBehaviour {
     GameObject player1;
     GameObject player2;
     public GameObject countDownText;
+	public GameObject matchTimerText;
     bool matchStarted = false;
     float countDownToMatch = 4;
+	float matchTimeLimit = 10;
     GameObject[] obstacles;
 
 	// Use this for initialization
@@ -22,16 +24,35 @@ public class MatchManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (matchStarted == false)
-        {
-            countDownToMatch -= Time.deltaTime;
-            countDownText.GetComponent<Text>().text = Mathf.Floor(countDownToMatch).ToString();
-            if (countDownToMatch<=0)
-            {
-                StartMatch();
+		// Initiate countdown sequence
+		if (matchStarted == false) 
+		{
+			countDownToMatch -= Time.deltaTime;
+			countDownText.GetComponent<Text> ().text = Mathf.Floor (countDownToMatch).ToString ();
+			if (countDownToMatch <= 0) 
+			{
+				StartMatch ();
                 
-            }
-        }
+			}
+		}
+		// Activate time limit
+		if (matchStarted == true)
+		{
+			matchTimeLimit -= Time.deltaTime;
+			matchTimerText.GetComponent<Text> ().text = Mathf.Floor (matchTimeLimit).ToString ();
+			// Determine which player has highest score when time equals 0
+			if (matchTimeLimit <= 0) 
+			{
+				if (GetComponent<UIManager> ().scoreText.text.Length > GetComponent<UIManager2> ().scoreText.text.Length) 
+				{
+					Application.LoadLevel ("Player1Win");
+				}
+				if (GetComponent<UIManager2> ().scoreText.text.Length > GetComponent<UIManager> ().scoreText.text.Length) 
+				{
+					Application.LoadLevel ("Player2Win");
+				}
+			}
+		}
 	}
     public void ResetAfterGoal() {
         countDownToMatch = 4;

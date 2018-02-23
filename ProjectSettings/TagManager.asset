@@ -12,6 +12,8 @@ TagManager:
   - ball
   - MatchManager
   - Obstacle
+  - Player1Score
+  - Player2Score
   layers:
   - Default
   - TransparentFX

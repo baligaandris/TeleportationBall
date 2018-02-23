@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager2 : MonoBehaviour {
 
-    int score = 0;
+    public static int score = 0;
     public Text scoreText;
 
     // Use this for initialization
