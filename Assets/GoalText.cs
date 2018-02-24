@@ -40,6 +40,7 @@ public class GoalText : MonoBehaviour {
 
         display = true;
         Var = true;
+        targetTime = 1.0f;
 
     }
 
