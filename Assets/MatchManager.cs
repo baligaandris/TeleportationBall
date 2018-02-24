@@ -11,7 +11,7 @@ public class MatchManager : MonoBehaviour {
 	public GameObject matchTimerText;
     bool matchStarted = false;
     float countDownToMatch = 4;
-	float matchTimeLimit = 10;
+	float matchTimeLimit = 120;
     GameObject[] obstacles;
 
 	// Use this for initialization

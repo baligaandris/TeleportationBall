@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AimingFeedback : MonoBehaviour {
     public float deadzone = 0.25f;
-    public float magnification = 10f;
-
+    public float magnification = 30f;
+    public float speed = 1;
     //axes to use
     private string h;
     private string v;
@@ -39,14 +39,32 @@ public class AimingFeedback : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0) {
+        //if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+        //{
+        //    Vector2 crosshairPosition = new Vector2(-Input.GetAxis(vAim), -Input.GetAxis(hAim));
+        //    if (crosshairPosition.magnitude > deadzone)
+        //    {
+        //        GetComponent<SpriteRenderer>().enabled = true;
+        //        transform.localPosition = crosshairPosition.normalized * magnification;
+        //    }
+        //}
+        //else
+        //{
+        //    GetComponent<SpriteRenderer>().enabled = false;
+        //}
+
+        if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+        {
             Vector2 crosshairPosition = new Vector2(-Input.GetAxis(vAim), -Input.GetAxis(hAim));
             if (crosshairPosition.magnitude > deadzone)
             {
                 GetComponent<SpriteRenderer>().enabled = true;
-                transform.localPosition = crosshairPosition.normalized*magnification;
-            }            
-        } else
+                float angle = Mathf.Atan2(Input.GetAxis(vAim), -Input.GetAxis(hAim)) * Mathf.Rad2Deg;
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                //transform.localPosition = crosshairPosition.normalized * magnification;
+            }
+        }
+        else
         {
             GetComponent<SpriteRenderer>().enabled = false;
         }

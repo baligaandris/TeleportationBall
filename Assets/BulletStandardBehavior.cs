@@ -18,14 +18,6 @@ public class BulletStandardBehavior : MonoBehaviour {
             Destroy(gameObject);
         }
 	}
-    //void BulletRange()
-    //{
-    //    bulletRange = bulletDistance - 3.0f;
-    //   /* if (bulletDistance > bulletRange)
-    //    {
-    //        Destroy(gameObject);
-    //    */
-    //}
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

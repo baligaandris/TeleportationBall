@@ -14,6 +14,8 @@ public class PlayerMovement : MonoBehaviour {
     private bool canFire2 = true;
     private Vector3 defaultPos;
 
+    private float chargeTeleportTime = 0;
+
     public float deadzone = 0.25f;
 
     //axes to use
@@ -24,10 +26,13 @@ public class PlayerMovement : MonoBehaviour {
     private string f1;
     private string f2;
 
+    Color originalcolor;
+
     // Use this for initialization
     void Start() {
         defaultPos = transform.position;
         rb = GetComponent<Rigidbody2D>(); //save rigidbody for later use
+        originalcolor = GetComponent<SpriteRenderer>().color;
         if (gameObject.tag == "Player") //check if the player that this is attached to is p1 or p2 and assign controls based on that
         {
             h = "Horizontal";
@@ -62,7 +67,7 @@ public class PlayerMovement : MonoBehaviour {
             {
                 if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
                 {
-                    fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)); //get input for aiming
+                    fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized; //get input for aiming
                     //print(fireVector);
                     GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity); //instantiate bullet/shockwave
                     Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>()); // this is to make sure you are not pushed around by your own bullet/shockwave
@@ -77,23 +82,28 @@ public class PlayerMovement : MonoBehaviour {
         }
         if (Input.GetAxis(f2) != 0) //same thing for the other projectile, you get the idea
         {
-            if (canFire2)
+            chargeTeleportTime += Time.deltaTime;
+            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.black, 0.02f);
+            if (chargeTeleportTime>= 1)
             {
                 if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
                 {
-                    fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim));
+                    fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
                     GameObject newBullet = Instantiate(bullet2, transform.position, Quaternion.identity);
                     newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
                     Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
                     newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
-                    canFire2 = false;
+                    chargeTeleportTime = 0;
+                    GetComponent<SpriteRenderer>().color = originalcolor;
                 }
             }
+
 
         }
         else
         {
-            canFire2 = true;
+            chargeTeleportTime = 0;
+            GetComponent<SpriteRenderer>().color = originalcolor;
         }
 
     }
