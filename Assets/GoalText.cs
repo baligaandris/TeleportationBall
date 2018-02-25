@@ -38,10 +38,14 @@ public class GoalText : MonoBehaviour {
     void OnTriggerEnter2D(Collider2D Ball)
     {
 
-        display = true;
-        Var = true;
-        targetTime = 1.0f;
+        if (Ball.gameObject.tag == "ball")
+            {
 
+            display = true;
+            Var = true;
+            targetTime = 1.0f;
+
+        }
     }
 
     void timerEnded()
