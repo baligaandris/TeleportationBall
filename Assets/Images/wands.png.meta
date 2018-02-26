@@ -1,0 +1,786 @@
+fileFormatVersion: 2
+guid: 22d91f5e66e36704d856515479432ccd
+timeCreated: 1519663756
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: wands_0
+    21300002: wands_1
+    21300004: wands_2
+    21300006: wands_3
+    21300008: wands_4
+    21300010: wands_5
+    21300012: wands_6
+    21300014: wands_7
+    21300016: wands_8
+    21300018: wands_9
+    21300020: wands_10
+    21300022: wands_11
+    21300024: wands_12
+    21300026: wands_13
+    21300028: wands_14
+    21300030: wands_15
+    21300032: wands_16
+    21300034: wands_17
+    21300036: wands_18
+    21300038: wands_19
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: wands_0
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 744
+        width: 173
+        height: 294
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 86.5, y: -24}
+        - {x: 86.5, y: 104}
+        - {x: 20.5, y: 147}
+        - {x: -58.5, y: 147}
+        - {x: -79.5, y: 123}
+        - {x: -86.5, y: 92}
+        - {x: -86.5, y: -121}
+        - {x: -68.5, y: -147}
+        - {x: 43.5, y: -147}
+        - {x: 47.5, y: -133}
+        - {x: 46.5, y: -58}
+        - {x: 44.5, y: -51}
+      - - {x: 65.5, y: -145}
+        - {x: 66.5, y: -147}
+        - {x: 69.5, y: -147}
+        - {x: 72.5, y: -145}
+        - {x: 72.5, y: -141}
+        - {x: 71.5, y: -139}
+        - {x: 65.5, y: -139}
+      - - {x: 66.5, y: -133}
+        - {x: 66.5, y: -135}
+        - {x: 69.5, y: -138}
+        - {x: 72.5, y: -138}
+        - {x: 74.5, y: -136}
+        - {x: 72.5, y: -131}
+        - {x: 68.5, y: -131}
+      - - {x: -86.5, y: -105}
+        - {x: -86.5, y: -117}
+        - {x: -85.5, y: -117}
+        - {x: -81.5, y: -113}
+        - {x: -81.5, y: -108}
+        - {x: -84.5, y: -105}
+      - - {x: -58.5, y: -11}
+        - {x: -61.5, y: -8}
+        - {x: -64.5, y: -1}
+        - {x: -67.5, y: 2}
+        - {x: -66.5, y: 1}
+        - {x: -64.5, y: 1}
+        - {x: -63.5, y: -2}
+        - {x: -60.5, y: -9}
+        - {x: -56.5, y: -12}
+        - {x: -57.5, y: -11}
+      - - {x: 65.5, y: 49}
+        - {x: 62.5, y: 52}
+        - {x: 63.5, y: 49}
+        - {x: 64.5, y: 47}
+        - {x: 65.5, y: 48}
+      physicsShape:
+      - - {x: -50.5, y: 147}
+        - {x: -55.5, y: 144}
+        - {x: -85.5, y: 72}
+        - {x: -85.5, y: -12}
+        - {x: -50.5, y: -136}
+        - {x: -46.5, y: -138}
+        - {x: -37.5, y: -146}
+        - {x: 52.5, y: -146}
+        - {x: 86.5, y: -98}
+        - {x: 86.5, y: 101}
+        - {x: 8.5, y: 147}
+      - - {x: -86.5, y: -114}
+        - {x: -83.5, y: -113}
+        - {x: -83.5, y: -109}
+        - {x: -85.5, y: -107}
+        - {x: -86.5, y: -107}
+      - - {x: -67.5, y: -7}
+        - {x: -74.5, y: -7}
+        - {x: -86.5, y: -17}
+        - {x: -86.5, y: -27}
+        - {x: -84.5, y: -37}
+        - {x: -82.5, y: -39}
+        - {x: -55.5, y: -39}
+        - {x: -52.5, y: -33}
+        - {x: -52.5, y: -15}
+        - {x: -53.5, y: -13}
+      - - {x: 67.5, y: 4}
+        - {x: 68.5, y: 10}
+        - {x: 68.5, y: 11}
+        - {x: 71.5, y: 12}
+        - {x: 71.5, y: 13}
+        - {x: 69.5, y: 11}
+        - {x: 67.5, y: 4}
+        - {x: 67.5, y: 3}
+        - {x: 66.5, y: 3}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_2
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 747
+        width: 168
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -67, y: -144.5}
+        - {x: -67, y: -146.5}
+        - {x: -58, y: -146.5}
+        - {x: -59, y: -143.5}
+        - {x: -62, y: -142.5}
+        - {x: -65, y: -142.5}
+      - - {x: -38, y: 146.5}
+        - {x: -84, y: 99.5}
+        - {x: -84, y: -35.5}
+        - {x: -66, y: -146.5}
+        - {x: 51, y: -146.5}
+        - {x: 84, y: -89.5}
+        - {x: 84, y: 118.5}
+        - {x: 79, y: 146.5}
+      - - {x: -67, y: -134.5}
+        - {x: -69, y: -138.5}
+        - {x: -69, y: -140.5}
+        - {x: -67, y: -141.5}
+        - {x: -64, y: -141.5}
+        - {x: -61, y: -138.5}
+        - {x: -61, y: -136.5}
+        - {x: -63, y: -134.5}
+      - - {x: 61, y: -6.5}
+        - {x: 63, y: -1.5}
+        - {x: 65, y: -1.5}
+        - {x: 66, y: -0.5}
+        - {x: 65, y: -0.5}
+        - {x: 62, y: -3.5}
+        - {x: 62, y: -9.5}
+        - {x: 60, y: -11.5}
+        - {x: 61, y: -11.5}
+        - {x: 60, y: -10.5}
+      - - {x: -59, y: 41.5}
+        - {x: -56, y: 53.5}
+        - {x: -62, y: 51.5}
+        - {x: -65, y: 41.5}
+      - - {x: -77, y: 121.5}
+        - {x: -84, y: 110.5}
+        - {x: -84, y: 84.5}
+        - {x: -83, y: 84.5}
+        - {x: -81, y: 85.5}
+        - {x: -73, y: 114.5}
+        - {x: -72, y: 119.5}
+        - {x: -73, y: 121.5}
+      physicsShape:
+      - - {x: -58, y: 146.5}
+        - {x: -83, y: 100.5}
+        - {x: -83, y: -94.5}
+        - {x: -44, y: -139.5}
+        - {x: -33, y: -146.5}
+        - {x: 69, y: -146.5}
+        - {x: 84, y: -117.5}
+        - {x: 84, y: 119.5}
+        - {x: 69, y: 146.5}
+      - - {x: 70, y: -8.5}
+        - {x: 61, y: -8.5}
+        - {x: 51, y: -17.5}
+        - {x: 51, y: -27.5}
+        - {x: 56, y: -40.5}
+        - {x: 84, y: -40.5}
+        - {x: 84, y: -20.5}
+        - {x: 82, y: -15.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_3
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 744
+        width: 174
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -87, y: -131}
+        - {x: -80, y: -148}
+        - {x: 65, y: -148}
+        - {x: 87, y: -130}
+        - {x: 87, y: 140}
+        - {x: 82, y: 148}
+        - {x: -57, y: 148}
+        - {x: -87, y: 85}
+      - - {x: 66, y: -1}
+        - {x: 66, y: 6}
+        - {x: 69, y: 16}
+        - {x: 69, y: 24}
+        - {x: 68, y: 25}
+        - {x: 68, y: 28}
+        - {x: 67, y: 28}
+        - {x: 69, y: 25}
+        - {x: 70, y: 15}
+        - {x: 67, y: 8}
+        - {x: 67, y: -1}
+        - {x: 65, y: 0}
+      - - {x: -67, y: 40}
+        - {x: -63, y: 48}
+        - {x: -66, y: 41}
+        - {x: -66, y: 39}
+        - {x: -69, y: 36}
+        - {x: -68, y: 36}
+        - {x: -69, y: 37}
+      physicsShape:
+      - - {x: -26, y: 147}
+        - {x: -40, y: 140}
+        - {x: -81, y: 83}
+        - {x: -85, y: 46}
+        - {x: -85, y: -5}
+        - {x: -43, y: -144}
+        - {x: -12, y: -147}
+        - {x: 38, y: -147}
+        - {x: 49, y: -143}
+        - {x: 83, y: -116}
+        - {x: 83, y: 147}
+      - - {x: 70, y: -1}
+        - {x: 60, y: -9}
+        - {x: 60, y: -23}
+        - {x: 62, y: -28}
+        - {x: 87, y: -28}
+        - {x: 87, y: -5}
+        - {x: 75, y: -1}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_4
+      rect:
+        serializedVersion: 2
+        x: 626
+        y: 744
+        width: 174
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -65, y: 146.5}
+        - {x: -87, y: 51.5}
+        - {x: -87, y: -31.5}
+        - {x: -61, y: -32.5}
+        - {x: -56, y: -20.5}
+        - {x: -56, y: -15.5}
+        - {x: -55, y: -24.5}
+        - {x: -55, y: -136.5}
+        - {x: -47, y: -146.5}
+        - {x: 49, y: -146.5}
+        - {x: 87, y: -12.5}
+        - {x: 87, y: 85.5}
+        - {x: 67, y: 146.5}
+      - - {x: -69, y: 18.5}
+        - {x: -70, y: 24.5}
+        - {x: -68, y: 23.5}
+        - {x: -68, y: 9.5}
+      - - {x: 67, y: 37.5}
+        - {x: 66, y: 41.5}
+        - {x: 62, y: 47.5}
+        - {x: 62, y: 54.5}
+        - {x: 67, y: 58.5}
+        - {x: 68, y: 59.5}
+        - {x: 67, y: 60.5}
+        - {x: 64, y: 57.5}
+        - {x: 64, y: 45.5}
+        - {x: 69, y: 38.5}
+        - {x: 68, y: 36.5}
+      physicsShape:
+      - - {x: 58, y: 146.5}
+        - {x: -61, y: 146.5}
+        - {x: -83, y: 72.5}
+        - {x: -83, y: 36.5}
+        - {x: -67, y: 2.5}
+        - {x: -55, y: -139.5}
+        - {x: -30, y: -146.5}
+        - {x: 22, y: -146.5}
+        - {x: 42, y: -142.5}
+        - {x: 85, y: -81.5}
+        - {x: 85, y: 97.5}
+      - - {x: -76, y: -0.5}
+        - {x: -87, y: -7.5}
+        - {x: -87, y: -19.5}
+        - {x: -85, y: -27.5}
+        - {x: -61, y: -27.5}
+        - {x: -60, y: -25.5}
+        - {x: -60, y: -5.5}
+        - {x: -66, y: -0.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_5
+      rect:
+        serializedVersion: 2
+        x: 808
+        y: 748
+        width: 168
+        height: 297
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -32, y: 148.5}
+        - {x: -80, y: 57.5}
+        - {x: -84, y: 34.5}
+        - {x: -84, y: -4.5}
+        - {x: -78, y: -7.5}
+        - {x: -47, y: -133.5}
+        - {x: -34, y: -148.5}
+        - {x: 58, y: -148.5}
+        - {x: 84, y: -99.5}
+        - {x: 84, y: 88.5}
+        - {x: 37, y: 148.5}
+      - - {x: -54, y: -100.5}
+        - {x: -57, y: -103.5}
+        - {x: -57, y: -106.5}
+        - {x: -53, y: -110.5}
+        - {x: -51, y: -110.5}
+        - {x: -47, y: -106.5}
+        - {x: -47, y: -103.5}
+        - {x: -50, y: -100.5}
+      - - {x: -65, y: 24.5}
+        - {x: -66, y: 24.5}
+        - {x: -66, y: 18.5}
+        - {x: -65, y: 18.5}
+      physicsShape:
+      - - {x: -5, y: 148.5}
+        - {x: -39, y: 148.5}
+        - {x: -83, y: 83.5}
+        - {x: -83, y: -43.5}
+        - {x: -67, y: -144.5}
+        - {x: -60, y: -148.5}
+        - {x: 65, y: -148.5}
+        - {x: 84, y: -101.5}
+        - {x: 84, y: 77.5}
+        - {x: 27, y: 137.5}
+      - - {x: -54, y: -102.5}
+        - {x: -55, y: -104.5}
+        - {x: -55, y: -107.5}
+        - {x: -54, y: -108.5}
+        - {x: -49, y: -108.5}
+        - {x: -49, y: -103.5}
+        - {x: -51, y: -102.5}
+      - - {x: -66, y: 17.5}
+        - {x: -67, y: 22.5}
+        - {x: -65, y: 26.5}
+        - {x: -65, y: 17.5}
+      - - {x: 65, y: 36.5}
+        - {x: 65, y: 38.5}
+        - {x: 68, y: 42.5}
+        - {x: 66, y: 41.5}
+        - {x: 66, y: 39.5}
+        - {x: 68, y: 33.5}
+        - {x: 67, y: 30.5}
+        - {x: 68, y: 30.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_7
+      rect:
+        serializedVersion: 2
+        x: 996
+        y: 725
+        width: 168
+        height: 323
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 55, y: -103.5}
+        - {x: 54, y: -104.5}
+        - {x: 54, y: -158.5}
+        - {x: 55, y: -161.5}
+        - {x: 60, y: -161.5}
+        - {x: 60, y: -113.5}
+        - {x: 59, y: -103.5}
+      - - {x: 64, y: 142.5}
+        - {x: 19, y: 161.5}
+        - {x: -45, y: 161.5}
+        - {x: -84, y: 124.5}
+        - {x: -84, y: -118.5}
+        - {x: -80, y: -140.5}
+        - {x: 40, y: -140.5}
+        - {x: 50, y: -134.5}
+        - {x: 84, y: -36.5}
+        - {x: 84, y: 75.5}
+      - - {x: -65, y: 34.5}
+        - {x: -66, y: 34.5}
+        - {x: -66, y: 29.5}
+        - {x: -65, y: 29.5}
+      - - {x: -84, y: 81.5}
+        - {x: -81, y: 82.5}
+        - {x: -81, y: 86.5}
+        - {x: -83, y: 88.5}
+        - {x: -84, y: 88.5}
+      physicsShape:
+      - - {x: 71, y: 45.5}
+        - {x: 74, y: 46.5}
+        - {x: 80, y: 50.5}
+        - {x: 72, y: 88.5}
+        - {x: 34, y: 136.5}
+        - {x: 23, y: 145.5}
+        - {x: -6, y: 159.5}
+        - {x: -32, y: 159.5}
+        - {x: -83, y: 60.5}
+        - {x: -84, y: 58.5}
+        - {x: -84, y: -27.5}
+        - {x: -42, y: -138.5}
+        - {x: 43, y: -138.5}
+        - {x: 65, y: -130.5}
+        - {x: 84, y: 16.5}
+        - {x: 84, y: 35.5}
+        - {x: 72, y: 45.5}
+      - - {x: -67, y: 27.5}
+        - {x: -66, y: 34.5}
+        - {x: -65, y: 28.5}
+        - {x: -67, y: 26.5}
+        - {x: -66, y: 26.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_8
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 755
+        width: 160
+        height: 293
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -39, y: 146.5}
+        - {x: -80, y: 83.5}
+        - {x: -80, y: -18.5}
+        - {x: -79, y: -20.5}
+        - {x: -67, y: -26.5}
+        - {x: -59, y: -23.5}
+        - {x: -57, y: -100.5}
+        - {x: -42, y: -146.5}
+        - {x: 80, y: -146.5}
+        - {x: 80, y: 146.5}
+      - - {x: -62, y: 10.5}
+        - {x: -63, y: 11.5}
+        - {x: -63, y: 16.5}
+        - {x: -61, y: 16.5}
+        - {x: -63, y: 14.5}
+        - {x: -63, y: 10.5}
+        - {x: -61, y: 5.5}
+        - {x: -61, y: 6.5}
+      - - {x: 63, y: 38.5}
+        - {x: 59, y: 42.5}
+        - {x: 61, y: 44.5}
+        - {x: 61, y: 38.5}
+        - {x: 62, y: 37.5}
+        - {x: 63, y: 37.5}
+      physicsShape:
+      - - {x: -24, y: 145.5}
+        - {x: -25, y: 144.5}
+        - {x: -49, y: 105.5}
+        - {x: -79, y: 49.5}
+        - {x: -79, y: -14.5}
+        - {x: -78, y: -19.5}
+        - {x: -45, y: -146.5}
+        - {x: 64, y: -146.5}
+        - {x: 80, y: -34.5}
+        - {x: 80, y: 88.5}
+        - {x: 4, y: 145.5}
+      - - {x: -61, y: 2.5}
+        - {x: -64, y: 12.5}
+        - {x: -61, y: 17.5}
+        - {x: -60, y: 1.5}
+      - - {x: 60, y: 38.5}
+        - {x: 61, y: 45.5}
+        - {x: 64, y: 48.5}
+        - {x: 64, y: 49.5}
+        - {x: 63, y: 48.5}
+        - {x: 63, y: 36.5}
+        - {x: 61, y: 33.5}
+        - {x: 62, y: 33.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_9
+      rect:
+        serializedVersion: 2
+        x: 1352
+        y: 752
+        width: 150
+        height: 296
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 75, y: 80}
+        - {x: 41, y: 148}
+        - {x: -7, y: 148}
+        - {x: -75, y: 109}
+        - {x: -75, y: -143}
+        - {x: -74, y: -148}
+        - {x: -12, y: -148}
+        - {x: 14, y: -144}
+        - {x: 34, y: -139}
+        - {x: 47, y: -132}
+        - {x: 75, y: -44}
+      - - {x: 58, y: 12}
+        - {x: 58, y: 8}
+        - {x: 59, y: 8}
+      - - {x: -57, y: 41}
+        - {x: -56, y: 43}
+        - {x: -57, y: 39}
+        - {x: -56, y: 39}
+      physicsShape:
+      - - {x: -13, y: 147}
+        - {x: -74, y: 98}
+        - {x: -74, y: -37}
+        - {x: -58, y: -147}
+        - {x: 21, y: -147}
+        - {x: 54, y: -136}
+        - {x: 75, y: -43}
+        - {x: 75, y: 69}
+        - {x: 42, y: 147}
+      - - {x: 57, y: 19}
+        - {x: 58, y: 19}
+        - {x: 59, y: 11}
+        - {x: 60, y: 7}
+        - {x: 56, y: 2}
+        - {x: 58, y: 3}
+      - - {x: -58, y: 38}
+        - {x: -58, y: 41}
+        - {x: -57, y: 37}
+        - {x: -57, y: 35}
+        - {x: -56, y: 35}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_15
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 610
+        width: 114
+        height: 39
+      alignment: 9
+      pivot: {x: 0.050514624, y: 0.8490006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 20, y: 19.5}
+        - {x: -57, y: 19.5}
+        - {x: -57, y: 1.5}
+        - {x: -42, y: -14.5}
+        - {x: -13, y: -19.5}
+        - {x: 57, y: -19.5}
+        - {x: 57, y: 8.5}
+        - {x: 45, y: 18.5}
+      physicsShape:
+      - - {x: -57, y: 19.5}
+        - {x: -57, y: 7.5}
+        - {x: -55, y: 3.5}
+        - {x: -28, y: -19.5}
+        - {x: 57, y: -19.5}
+        - {x: 57, y: 14.5}
+        - {x: 42, y: 19.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_16
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 612
+        width: 120
+        height: 37
+      alignment: 9
+      pivot: {x: 0.06631711, y: 0.84622604}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: 18.5}
+        - {x: -60, y: 0.5}
+        - {x: -38, y: -18.5}
+        - {x: 60, y: -18.5}
+        - {x: 60, y: 0.5}
+        - {x: -15, y: 18.5}
+      physicsShape:
+      - - {x: -59, y: 18.5}
+        - {x: -59, y: 6.5}
+        - {x: -37, y: -16.5}
+        - {x: 58, y: -16.5}
+        - {x: 60, y: -14.5}
+        - {x: 60, y: 2.5}
+        - {x: 14, y: 18.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_17
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 604
+        width: 137
+        height: 41
+      alignment: 9
+      pivot: {x: 0.055846278, y: 0.8124479}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -68.5, y: 20.5}
+        - {x: -68.5, y: -5.5}
+        - {x: -35.5, y: -20.5}
+        - {x: 68.5, y: -20.5}
+        - {x: 68.5, y: 20.5}
+      physicsShape:
+      - - {x: -68.5, y: 20.5}
+        - {x: -68.5, y: -3.5}
+        - {x: -22.5, y: -20.5}
+        - {x: 68.5, y: -20.5}
+        - {x: 68.5, y: 19.5}
+        - {x: 67.5, y: 20.5}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_18
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 556
+        width: 128
+        height: 36
+      alignment: 9
+      pivot: {x: 0.06527448, y: 0.78912354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -7, y: 18}
+        - {x: -64, y: 18}
+        - {x: -64, y: -12}
+        - {x: -48, y: -18}
+        - {x: 64, y: -18}
+        - {x: 64, y: 0}
+        - {x: 63, y: 3}
+      physicsShape:
+      - - {x: -64, y: 18}
+        - {x: -64, y: 5}
+        - {x: -62, y: 1}
+        - {x: -49, y: -18}
+        - {x: 63, y: -18}
+        - {x: 63, y: 1}
+        - {x: 0, y: 18}
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: wands_19
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 548
+        width: 120
+        height: 37
+      alignment: 9
+      pivot: {x: 0.07298914, y: 0.80294716}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -60, y: 18.5}
+        - {x: -60, y: -3.5}
+        - {x: -46, y: -18.5}
+        - {x: 59, y: -18.5}
+        - {x: 60, y: -15.5}
+        - {x: 60, y: 9.5}
+        - {x: 13, y: 18.5}
+      physicsShape:
+      - - {x: 13, y: 18.5}
+        - {x: -59, y: 18.5}
+        - {x: -59, y: 4.5}
+        - {x: -50, y: -17.5}
+        - {x: 60, y: -17.5}
+        - {x: 60, y: -0.5}
+        - {x: 55, y: 9.5}
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

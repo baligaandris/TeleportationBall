@@ -25,10 +25,10 @@ TagManager:
   - 
   - Bullet
   - Goal
-  - 
-  - 
-  - 
-  - 
+  - CollideWithBall
+  - CollideWithPlayer
+  - Ball
+  - Player
   - 
   - 
   - 

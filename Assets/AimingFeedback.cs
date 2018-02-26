@@ -59,7 +59,7 @@ public class AimingFeedback : MonoBehaviour {
             if (crosshairPosition.magnitude > deadzone)
             {
                 GetComponent<SpriteRenderer>().enabled = true;
-                float angle = Mathf.Atan2(Input.GetAxis(vAim), -Input.GetAxis(hAim)) * Mathf.Rad2Deg;
+                float angle = Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                 //transform.localPosition = crosshairPosition.normalized * magnification;
             }
