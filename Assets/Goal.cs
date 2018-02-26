@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class Goal : MonoBehaviour
 {
-    private float goalTime = 0.3f;
+    private float goalTime;
     public float goalTimeMax = 0.3f;
     private bool itIsGoalTime = false;
 
     public UIManager ui;
-
     // Use this for initialization
     void Start()
     {
-
+        goalTime = goalTimeMax;
         ui = GameObject.FindWithTag("ui").GetComponent<UIManager>();
 
     }

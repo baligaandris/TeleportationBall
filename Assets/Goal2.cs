@@ -4,17 +4,27 @@ using UnityEngine;
 
 public class Goal2 : MonoBehaviour
 {
-    private float goalTime = 0.3f;
+    private float goalTime;
     public float goalTimeMax = 0.3f;
     private bool itIsGoalTime = false;
 
-    public UIManager2 ui2;
+
+    public bool Goal1 = false;
+    public UIManager ui;
 
     // Use this for initialization
     void Start()
     {
-
-        ui2 = GameObject.FindWithTag("ui2").GetComponent<UIManager2>();
+        goalTime = goalTimeMax;
+        if (Goal1)
+        {
+            ui = GameObject.FindGameObjectWithTag("ui").GetComponent<UIManager>();
+        }
+        else
+        {
+            ui = GameObject.FindGameObjectWithTag("ui2").GetComponent<UIManager>();
+        }
+        
 
     }
 
@@ -50,7 +60,7 @@ public class Goal2 : MonoBehaviour
 
         if (Ball.gameObject.tag == "ball")
         {
-            ui2.IncrementScore();
+            ui.IncrementScore();
             itIsGoalTime = true;
         }
     }

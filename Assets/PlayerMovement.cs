@@ -57,8 +57,8 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //get input for movement
-        float xAxis = -Input.GetAxis(h);
-        float yAxis = -Input.GetAxis(v);
+        float xAxis = -Input.GetAxis(v);
+        float yAxis = Input.GetAxis(h);
         Accellerate(xAxis, yAxis); //call the movement function
 
         if (Input.GetAxis(f1) != 0) //get input for shockwave attack from right trigger
