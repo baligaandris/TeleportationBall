@@ -689,6 +689,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &857657603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 857657604}
+  - component: {fileID: 857657605}
+  m_Layer: 11
+  m_Name: Horizontal Collision
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &857657604
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 857657603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1573937109}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &857657605
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 857657603}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.38}
+  m_Size: {x: 6.91, y: 1.93}
+  m_Direction: 1
 --- !u!1 &877791190
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,6 +774,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &976935058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 976935059}
+  m_Layer: 0
+  m_Name: WandEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976935059
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976935058}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.908, y: -0.19, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1856710622}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &999720146
 Prefab:
   m_ObjectHideFlags: 0
@@ -769,7 +841,19 @@ Prefab:
       propertyPath: m_RootOrder
       value: 16
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 70842646548772196, guid: 50289a71c0b5d38409d28b1bf8031c25,
+        type: 2}
+      propertyPath: m_Size.y
+      value: 4.53
+      objectReference: {fileID: 0}
+    - target: {fileID: 70842646548772196, guid: 50289a71c0b5d38409d28b1bf8031c25,
+        type: 2}
+      propertyPath: m_Offset.y
+      value: 1.78
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 70951662691336472, guid: 50289a71c0b5d38409d28b1bf8031c25, type: 2}
+    - {fileID: 61923373957662982, guid: 50289a71c0b5d38409d28b1bf8031c25, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 50289a71c0b5d38409d28b1bf8031c25, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1028756120
@@ -957,7 +1041,9 @@ MonoBehaviour:
   maxVelocity: 2
   bullet: {fileID: 1770116424590100, guid: f02f6f69ed966f849b38e5da7c5afdef, type: 2}
   bullet2: {fileID: 1970579470120778, guid: 1d47b577546df3f4d930391dd8e32c3e, type: 2}
+  wandEnd: {fileID: 976935058}
   fireSpeed: 1000
+  noInputCountdownMax: 0.25
   deadzone: 0.25
 --- !u!95 &1039768610
 Animator:
@@ -1478,11 +1564,11 @@ GameObject:
   - component: {fileID: 1498275856}
   m_Layer: 10
   m_Name: CollideWithBall
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1498275855
 Transform:
   m_ObjectHideFlags: 0
@@ -1508,8 +1594,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03, y: 0}
-  m_Size: {x: 0.87, y: 2.84}
+  m_Offset: {x: 0.03, y: -0.4}
+  m_Size: {x: 0.87, y: 2.15}
   m_Direction: 0
 --- !u!1 &1523470622
 GameObject:
@@ -1558,7 +1644,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 1
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1.3
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1736,7 +1822,9 @@ MonoBehaviour:
   maxVelocity: 2
   bullet: {fileID: 1770116424590100, guid: f02f6f69ed966f849b38e5da7c5afdef, type: 2}
   bullet2: {fileID: 1970579470120778, guid: 1d47b577546df3f4d930391dd8e32c3e, type: 2}
+  wandEnd: {fileID: 1676879468}
   fireSpeed: 1000
+  noInputCountdownMax: 0.25
   deadzone: 0.25
 --- !u!61 &1567260122
 BoxCollider2D:
@@ -1859,6 +1947,64 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!1 &1573937104 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1755115708184232, guid: 50289a71c0b5d38409d28b1bf8031c25,
+    type: 2}
+  m_PrefabInternal: {fileID: 999720146}
+--- !u!50 &1573937105
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1573937104}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 0
+--- !u!4 &1573937109 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4555957355530752, guid: 50289a71c0b5d38409d28b1bf8031c25,
+    type: 2}
+  m_PrefabInternal: {fileID: 999720146}
+--- !u!1 &1676879468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1676879469}
+  m_Layer: 0
+  m_Name: WandEnd
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1676879469
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1676879468}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.9, y: -0.16, z: -0.0126953125}
+  m_LocalScale: {x: 1.3333334, y: 2, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1975012034}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1718938294
 GameObject:
   m_ObjectHideFlags: 0
@@ -1870,11 +2016,11 @@ GameObject:
   - component: {fileID: 1718938296}
   m_Layer: 10
   m_Name: CollideWithBall
-  m_TagString: Untagged
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1718938295
 Transform:
   m_ObjectHideFlags: 0
@@ -1900,8 +2046,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.03, y: 0}
-  m_Size: {x: 0.87, y: 2.84}
+  m_Offset: {x: 0.03, y: -0.4}
+  m_Size: {x: 0.87, y: 2.15}
   m_Direction: 0
 --- !u!1 &1856710621
 GameObject:
@@ -1926,13 +2072,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1856710621}
-  m_LocalRotation: {x: -0, y: -0, z: -0.09623841, w: -0.99535835}
+  m_LocalRotation: {x: -0, y: -0, z: -0.99704355, w: 0.07683846}
   m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 976935059}
   m_Father: {fileID: 1039768608}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 371.045}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 548.81396}
 --- !u!114 &1856710623
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2134,13 +2281,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1975012033}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: 0.02905397, w: 0.9995779}
   m_LocalPosition: {x: 0, y: -0.35, z: 0}
   m_LocalScale: {x: 1.5, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1676879469}
   m_Father: {fileID: 1567260125}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 3.3300002}
 --- !u!114 &1975012035
 MonoBehaviour:
   m_ObjectHideFlags: 0

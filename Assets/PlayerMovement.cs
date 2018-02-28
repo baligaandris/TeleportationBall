@@ -9,10 +9,13 @@ public class PlayerMovement : MonoBehaviour {
     private Vector3 fireVector;
     public GameObject bullet;
     public GameObject bullet2;
+    public GameObject wandEnd;
     public float fireSpeed;
     private bool canFire1 = true;
     private bool canFire2 = true;
     private Vector3 defaultPos;
+    private float noInputCountdown;
+    public float noInputCountdownMax = 0.5f;
 
     private float chargeTeleportTime = 0;
 
@@ -29,6 +32,10 @@ public class PlayerMovement : MonoBehaviour {
     Color originalcolor;
 
     private Animator anim;
+    private bool getinput = true;
+
+    private bool chargingPush = false;
+    private float pushCharge = 0;
 
     // Use this for initialization
     void Start() {
@@ -60,55 +67,80 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //get input for movement
-        float xAxis = -Input.GetAxis(v);
-        float yAxis = Input.GetAxis(h);
-        Accellerate(xAxis, yAxis); //call the movement function
-
-        if (Input.GetAxis(f1) != 0) //get input for shockwave attack from right trigger
+        if (getinput)
         {
-            if (canFire1) // since the trigger doesn't have a "getbuttondown" because it is an axis this bool takes care of only fireing it once when the trigger is pulled
+            float xAxis = -Input.GetAxis(v);
+            float yAxis = Input.GetAxis(h);
+            Accellerate(xAxis, yAxis); //call the movement function
+
+            if (Input.GetAxis(f1) != 0) //get input for shockwave attack from right trigger
             {
-                if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
+                if (canFire1) // since the trigger doesn't have a "getbuttondown" because it is an axis this bool takes care of only fireing it once when the trigger is pulled
+                {
+                    if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
+                    {
+                        chargingPush = true;
+                        pushCharge += Time.deltaTime;
+                        
+                    }
+                }
+            }
+            else
+            {
+                if (chargingPush)
                 {
                     fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized; //get input for aiming
-                    //print(fireVector);
-                    GameObject newBullet = Instantiate(bullet, transform.position, Quaternion.identity); //instantiate bullet/shockwave
+                    print(fireVector);
+                    GameObject newBullet = Instantiate(bullet, wandEnd.transform.position, Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg) - 90))); //instantiate bullet/shockwave
                     Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>()); // this is to make sure you are not pushed around by your own bullet/shockwave
                     newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed); //add force to the bullet in the direction of your aim
-                    canFire1 = false; //this is the same bool, that makes sure you don't fire a 1000 bullets a second
+                    newBullet.GetComponent<BulletStandardBehavior>().SetMaxRagne(pushCharge);
+                    newBullet.GetComponent<BulletStandardBehavior>().SetPushStrenght(pushCharge);
+                    //canFire1 = false; //this is the same bool, that makes sure you don't fire a 1000 bullets a second
+                    chargingPush = false;
+                    pushCharge = 0;
                 }
+                //canFire1 = true; //when the player releases the trigger they get back the ability to shoot
             }
-        }
-        else
-        {
-            canFire1 = true; //when the player releases the trigger they get back the ability to shoot
-        }
-        if (Input.GetAxis(f2) != 0) //same thing for the other projectile, you get the idea
-        {
-            chargeTeleportTime += Time.deltaTime;
-            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.black, 0.02f);
-            if (chargeTeleportTime>= 1)
+            if (Input.GetAxis(f2) != 0) //same thing for the other projectile, you get the idea
             {
-                if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+                //chargeTeleportTime += Time.deltaTime;
+                //GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.black, 0.02f);
+                //if (chargeTeleportTime >= 0)
+                if (canFire2)
                 {
-                    fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
-                    GameObject newBullet = Instantiate(bullet2, transform.position, Quaternion.identity);
-                    newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
-                    Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
-                    Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), newBullet.GetComponent<Collider2D>());
-                    newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
-                    chargeTeleportTime = 0;
-                    GetComponent<SpriteRenderer>().color = originalcolor;
+                    if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+                    {
+                        canFire2 = false;
+                        fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                        GameObject newBullet = Instantiate(bullet2, wandEnd.transform.position, Quaternion.identity);
+                        newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
+                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
+                        Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), newBullet.GetComponent<Collider2D>());
+                        newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
+                        chargeTeleportTime = 0;
+                        GetComponent<SpriteRenderer>().color = originalcolor;
+                    }
                 }
+
+
             }
-
-
+            else
+            {
+                //chargeTeleportTime = 0;
+                //GetComponent<SpriteRenderer>().color = originalcolor;
+                canFire2 = true;
+            }
         }
         else
         {
-            chargeTeleportTime = 0;
-            GetComponent<SpriteRenderer>().color = originalcolor;
+            noInputCountdown -= Time.deltaTime;
+            if (noInputCountdown<=0)
+            {
+                SwitchInput(true);
+            }
         }
+        
         if (Input.GetAxis(hAim) ==0 && Input.GetAxis(vAim)==0)
         {
             anim.SetBool("Aiming", false);
@@ -149,5 +181,10 @@ public class PlayerMovement : MonoBehaviour {
     public void ResetPosition (){
         transform.position = defaultPos;
         GetComponent<Rigidbody2D>().velocity = GetComponent<Rigidbody2D>().velocity * 0;
+    }
+
+    public void SwitchInput(bool switchto) {
+        getinput = switchto;
+        noInputCountdown = noInputCountdownMax;
     }
 }

@@ -44,13 +44,14 @@ public class Goal2 : MonoBehaviour
                 GameObject.FindGameObjectWithTag("MatchManager").GetComponent<MatchManager>().ResetAfterGoal();
                 itIsGoalTime = false;
                 goalTime = goalTimeMax;
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = 0.02F * Time.timeScale;
             }
             
         }
         else
         {
-            Time.timeScale = 1;
-            Time.fixedDeltaTime = 0.02F * Time.timeScale;
+            
         }
     }
 

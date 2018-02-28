@@ -20,9 +20,10 @@ public class BulletSwitchBehavior : MonoBehaviour {
     {
         if (collision.tag !="Immovable") //when colliding with something that is not immovable switch its position with the player's, and the destroy self.
         {
+            print(collision.gameObject.name);
             tempPos = whoFiredMe.transform.position;
-            whoFiredMe.transform.position = collision.transform.position;
-            collision.transform.position = tempPos;
+            whoFiredMe.transform.position = collision.gameObject.transform.root.position;
+            collision.gameObject.transform.root.position = tempPos;
             Destroy(gameObject);
         }
     }
