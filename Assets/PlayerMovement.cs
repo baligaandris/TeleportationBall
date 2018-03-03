@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
     Rigidbody2D rb;
@@ -12,7 +13,7 @@ public class PlayerMovement : MonoBehaviour {
     public GameObject wandEnd;
     public float fireSpeed;
     private bool canFire1 = true;
-    private bool canFire2 = true;
+    private bool canFire2 = false;
     private Vector3 defaultPos;
     private float noInputCountdown;
     public float noInputCountdownMax = 0.5f;
@@ -37,8 +38,19 @@ public class PlayerMovement : MonoBehaviour {
     private bool chargingPush = false;
     private float pushCharge = 0;
 
+    //teleportation variables
+    private int teleportsLeft;
+    public int maxTeleports = 3;
+    private float teleportCharging;
+    public float teleportChargingMax = 2f;
+    public Text teleportCounterUI;
+    public float teleportWait = 1f;
+    private RaycastHit2D hit;
+
     // Use this for initialization
     void Start() {
+        teleportsLeft = maxTeleports;
+        teleportCounterUI.GetComponent<Text>().text = teleportsLeft.ToString();
         defaultPos = transform.position;
         rb = GetComponent<Rigidbody2D>(); //save rigidbody for later use
         originalcolor = GetComponent<SpriteRenderer>().color;
@@ -67,6 +79,21 @@ public class PlayerMovement : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         //get input for movement
+        if (GetComponent<LineRenderer>().enabled)
+        {
+            GetComponent<LineRenderer>().SetPosition(0, wandEnd.transform.position);
+        }
+        if (teleportsLeft<maxTeleports)
+        {
+            teleportCharging += Time.deltaTime;
+            if (teleportCharging>=teleportChargingMax)
+            {
+                teleportCharging = 0;
+                teleportsLeft++;
+                teleportCounterUI.GetComponent<Text>().text = teleportsLeft.ToString();
+            }
+        }
+
         if (getinput)
         {
             float xAxis = -Input.GetAxis(v);
@@ -107,29 +134,60 @@ public class PlayerMovement : MonoBehaviour {
                 //chargeTeleportTime += Time.deltaTime;
                 //GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.black, 0.02f);
                 //if (chargeTeleportTime >= 0)
-                if (canFire2)
-                {
+
                     if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
                     {
-                        canFire2 = false;
-                        fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
-                        GameObject newBullet = Instantiate(bullet2, wandEnd.transform.position, Quaternion.identity);
-                        newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
-                        Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
-                        Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), newBullet.GetComponent<Collider2D>());
-                        newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
-                        chargeTeleportTime = 0;
-                        GetComponent<SpriteRenderer>().color = originalcolor;
+                        if (teleportsLeft>0)
+                        {
+                            canFire2 = true;
+                            //fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                            //GameObject newBullet = Instantiate(bullet2, wandEnd.transform.position, Quaternion.identity);
+                            //newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
+                            //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
+                            //Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), newBullet.GetComponent<Collider2D>());
+                            //newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
+                            //chargeTeleportTime = 0;
+                            //GetComponent<SpriteRenderer>().color = originalcolor;
+                           
+                            fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                            
+                            hit = Physics2D.Raycast(wandEnd.transform.position, fireVector);
+
+
+                            GetComponent<LineRenderer>().enabled = true;
+                            GetComponent<LineRenderer>().SetPosition(0, wandEnd.transform.position);
+                            GetComponent<LineRenderer>().SetPosition(1, hit.point);
+                        }
+                        
                     }
-                }
+
 
 
             }
             else
             {
-                //chargeTeleportTime = 0;
-                //GetComponent<SpriteRenderer>().color = originalcolor;
-                canFire2 = true;
+                if (canFire2)
+                {
+                    teleportsLeft--;
+                    teleportCounterUI.GetComponent<Text>().text = teleportsLeft.ToString();
+                    if (hit.collider != null)
+                    {
+                        if (hit.collider.gameObject.tag != "Immovable" && hit.collider.gameObject.tag != "Goal") //when colliding with something that is not immovable switch its position with the player's, and the destroy self.
+                        {
+                            StartCoroutine(WaitAndTeleport(hit));
+                        }
+                        else
+                        {
+                            StartCoroutine(WaitAndTurnOffLineRenderer());
+                        }
+                    }
+                    else
+                    {
+                        StartCoroutine(WaitAndTurnOffLineRenderer());
+                    }
+                    canFire2 = false;
+                }
+
             }
         }
         else
@@ -186,5 +244,18 @@ public class PlayerMovement : MonoBehaviour {
     public void SwitchInput(bool switchto) {
         getinput = switchto;
         noInputCountdown = noInputCountdownMax;
+    }
+
+    private IEnumerator WaitAndTeleport(RaycastHit2D hit) {
+        yield return new WaitForSeconds(teleportWait);
+        Vector3 tempPos = transform.position;
+        transform.position = hit.collider.gameObject.transform.root.position;
+        hit.collider.gameObject.transform.root.position = tempPos;
+        GetComponent<LineRenderer>().enabled = false;
+    }
+    private IEnumerator WaitAndTurnOffLineRenderer()
+    {
+        yield return new WaitForSeconds(0.1f);
+        GetComponent<LineRenderer>().enabled = false;
     }
 }

@@ -38,9 +38,9 @@ public class BulletStandardBehavior : MonoBehaviour {
             }
             
         }
-        if (collision.gameObject.GetComponent<Rigidbody2D>() != null) //check if the bullet has collided with something, and if it did, and that something has a rigidbody, push it with a force proportional to it's distance from the player that fired it
+        if (collision.gameObject.transform.root.GetComponent<Rigidbody2D>() != null) //check if the bullet has collided with something, and if it did, and that something has a rigidbody, push it with a force proportional to it's distance from the player that fired it
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().velocity.normalized * pushStrength );
+            collision.gameObject.transform.root.GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().velocity.normalized * pushStrength );
         }
         //Destroy(gameObject); //if it collides with anything, it should destroy itself
     }
