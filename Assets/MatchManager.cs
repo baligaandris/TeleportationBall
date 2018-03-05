@@ -9,6 +9,10 @@ public class MatchManager : MonoBehaviour {
     GameObject player2;
     public GameObject countDownText;
 	public GameObject matchTimerText;
+    public Text player1ScoreText;
+    public Text player2ScoreText;
+    public static int player1Score;
+    public static int player2Score;
     bool matchStarted = false;
     float countDownToMatch = 4;
 	float matchTimeLimit = 120;
@@ -20,7 +24,10 @@ public class MatchManager : MonoBehaviour {
         player2 = GameObject.FindGameObjectWithTag("Player2");
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         ResetAfterGoal();
+        player1ScoreText.text = "" + player1Score;
+        player2ScoreText.text = "" + player2Score;
     }
+
 	
 	// Update is called once per frame
 	void Update () {
@@ -43,14 +50,18 @@ public class MatchManager : MonoBehaviour {
 			// Determine which player has highest score when time equals 0
 			if (matchTimeLimit <= 0) 
 			{
-				if (GetComponent<UIManager> ().scoreText.text.Length > GetComponent<UIManager2> ().scoreText.text.Length) 
+				if (player1Score > player2Score)
 				{
 					Application.LoadLevel ("Player1Win");
 				}
-				if (GetComponent<UIManager2> ().scoreText.text.Length > GetComponent<UIManager> ().scoreText.text.Length) 
+				if (player2Score > player1Score)
 				{
 					Application.LoadLevel ("Player2Win");
 				}
+                else if (player1Score == player2Score)
+                {
+                    Application.LoadLevel("Match Draw");
+                }
 			}
 		}
 	}
