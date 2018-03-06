@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212175081198031250}
   - component: {fileID: 114666887997259420}
   - component: {fileID: 50294186725477486}
+  - component: {fileID: 114655713339747668}
   m_Layer: 11
   m_Name: Obstacle
   m_TagString: Obstacle
@@ -94,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1755115708184232}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.07, y: -2.26, z: 0}
+  m_LocalPosition: {x: 2.14, y: -1.72, z: 0}
   m_LocalScale: {x: 0.12744558, y: 0.1578408, z: 1}
   m_Children:
   - {fileID: 4330532124387480}
@@ -134,8 +135,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.38}
-  m_Size: {x: 6.91, y: 1.93}
+  m_Offset: {x: 0, y: -0.22}
+  m_Size: {x: 6.91, y: 2.33}
   m_Direction: 1
 --- !u!70 &70842646548772196
 CapsuleCollider2D:
@@ -152,6 +153,17 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 1.78}
   m_Size: {x: 5.18, y: 4.53}
   m_Direction: 0
+--- !u!114 &114655713339747668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1755115708184232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c897512e7db524396fabf3b7ffabff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114666887997259420
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -24,8 +24,8 @@ public class MatchManager : MonoBehaviour {
         player2 = GameObject.FindGameObjectWithTag("Player2");
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         ResetAfterGoal();
-        player1ScoreText.text = "" + player1Score;
-        player2ScoreText.text = "" + player2Score;
+        player1ScoreText.text = player1Score.ToString();
+        player2ScoreText.text = player2Score.ToString();
     }
 
 	
@@ -46,9 +46,22 @@ public class MatchManager : MonoBehaviour {
 		if (matchStarted == true)
 		{
 			matchTimeLimit -= Time.deltaTime;
-			matchTimerText.GetComponent<Text> ().text = Mathf.Floor (matchTimeLimit).ToString ();
-			// Determine which player has highest score when time equals 0
-			if (matchTimeLimit <= 0) 
+            string countdownstr = Mathf.Floor(matchTimeLimit).ToString(); //spacing out the time display so it fits into the UI
+            if (countdownstr.Length==3)
+            {
+                matchTimerText.GetComponent<Text>().text = countdownstr[0] + "   " + countdownstr[1] + "  " + countdownstr[2];
+            }
+            else if (countdownstr.Length == 2)
+            {
+                matchTimerText.GetComponent<Text>().text = "     " + countdownstr[0] + "  " + countdownstr[1];
+            }
+            else if (countdownstr.Length == 1)
+            {
+                matchTimerText.GetComponent<Text>().text = "        " + countdownstr[0];
+            }
+            
+            // Determine which player has highest score when time equals 0
+            if (matchTimeLimit <= 0) 
 			{
 				if (player1Score > player2Score)
 				{

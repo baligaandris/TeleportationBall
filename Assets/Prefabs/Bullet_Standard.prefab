@@ -89,8 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e892da56839f79445a87cd6919cd7ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletRange: 1.5
-  pushStrength: 200
+  bulletRange: 2
+  pushStrength: 300
 --- !u!212 &212057532215549570
 SpriteRenderer:
   m_ObjectHideFlags: 1

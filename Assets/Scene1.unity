@@ -513,7 +513,6 @@ GameObject:
   - component: {fileID: 474384136}
   - component: {fileID: 474384138}
   - component: {fileID: 474384137}
-  - component: {fileID: 474384139}
   m_Layer: 5
   m_Name: Score2
   m_TagString: Player1Score
@@ -536,7 +535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -786.1, y: -202.8}
+  m_AnchoredPosition: {x: -798.7, y: -212.1}
   m_SizeDelta: {x: 169.9, y: 97.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &474384137
@@ -551,7 +550,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5586207, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -578,21 +577,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 474384135}
---- !u!114 &474384139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 474384135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b767cb854609e4aa34c46c2dd89daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countDownText: {fileID: 1858673442}
-  matchTimerText: {fileID: 1131955201}
-  player1ScoreText: {fileID: 0}
-  player2ScoreText: {fileID: 474384137}
 --- !u!1001 &532509890
 Prefab:
   m_ObjectHideFlags: 0
@@ -776,7 +760,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1000
-  m_Sprite: {fileID: 21300000, guid: 0362c8da7473ea144b410be9b2cf0e1b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 04ff94b672014ba4f908e710a239ea97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -808,11 +792,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4555957355530752, guid: 50289a71c0b5d38409d28b1bf8031c25, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 3.11
+      value: 2.85
       objectReference: {fileID: 0}
     - target: {fileID: 4555957355530752, guid: 50289a71c0b5d38409d28b1bf8031c25, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -3.84
+      value: -3.92
       objectReference: {fileID: 0}
     - target: {fileID: 4555957355530752, guid: 50289a71c0b5d38409d28b1bf8031c25, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1328,6 +1312,7 @@ GameObject:
   - component: {fileID: 1039768609}
   - component: {fileID: 1039768610}
   - component: {fileID: 1039768611}
+  - component: {fileID: 1039768612}
   m_Layer: 13
   m_Name: Player 1
   m_TagString: Player
@@ -1347,7 +1332,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.04}
+  m_Offset: {x: 0, y: -0.95}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1358,7 +1343,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.83, y: 0.74}
+  m_Size: {x: 0.83, y: 0.83}
   m_EdgeRadius: 0
 --- !u!50 &1039768606
 Rigidbody2D:
@@ -1455,7 +1440,7 @@ MonoBehaviour:
   bullet: {fileID: 1770116424590100, guid: f02f6f69ed966f849b38e5da7c5afdef, type: 2}
   bullet2: {fileID: 1970579470120778, guid: 1d47b577546df3f4d930391dd8e32c3e, type: 2}
   wandEnd: {fileID: 976935058}
-  fireSpeed: 1000
+  fireSpeed: 700
   noInputCountdownMax: 0.25
   deadzone: 0.25
   maxTeleports: 3
@@ -1573,6 +1558,17 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &1039768612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1039768604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c897512e7db524396fabf3b7ffabff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1046419844
 Prefab:
   m_ObjectHideFlags: 0
@@ -1750,7 +1746,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 54.1, y: -274.3}
+  m_AnchoredPosition: {x: 27.3, y: -306.5}
   m_SizeDelta: {x: 173.5, y: 127.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1131955203
@@ -1765,7 +1761,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.92156863, g: 0.65882355, b: 0.03529412, a: 1}
+  m_Color: {r: 0.92156863, g: 0.92156863, b: 0.92156863, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1774,10 +1770,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 50
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 5
+    m_MinSize: 3
     m_MaxSize: 50
     m_Alignment: 0
     m_AlignByGeometry: 0
@@ -1785,7 +1781,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: 0   0  0
 --- !u!222 &1131955204
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1901,7 +1897,6 @@ GameObject:
   - component: {fileID: 1422122509}
   - component: {fileID: 1422122511}
   - component: {fileID: 1422122510}
-  - component: {fileID: 1422122512}
   m_Layer: 5
   m_Name: Score1
   m_TagString: Player2Score
@@ -1924,7 +1919,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 973.36, y: -201.6}
+  m_AnchoredPosition: {x: 937.7, y: -216.6}
   m_SizeDelta: {x: 183.6, y: 104.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1422122510
@@ -1939,7 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.47586206, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1966,21 +1961,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1422122508}
---- !u!114 &1422122512
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1422122508}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b767cb854609e4aa34c46c2dd89daa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countDownText: {fileID: 1858673442}
-  matchTimerText: {fileID: 1131955201}
-  player1ScoreText: {fileID: 1422122510}
-  player2ScoreText: {fileID: 0}
 --- !u!1 &1456026419
 GameObject:
   m_ObjectHideFlags: 0
@@ -2182,6 +2162,7 @@ GameObject:
   - component: {fileID: 1523470624}
   - component: {fileID: 1523470623}
   - component: {fileID: 1523470627}
+  - component: {fileID: 1523470628}
   m_Layer: 12
   m_Name: Ball
   m_TagString: ball
@@ -2292,6 +2273,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31338704485f5aa409b24a4fee77a6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1523470628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523470622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09c897512e7db524396fabf3b7ffabff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1530816336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2397,7 +2389,7 @@ MonoBehaviour:
   bullet: {fileID: 1770116424590100, guid: f02f6f69ed966f849b38e5da7c5afdef, type: 2}
   bullet2: {fileID: 1970579470120778, guid: 1d47b577546df3f4d930391dd8e32c3e, type: 2}
   wandEnd: {fileID: 1676879468}
-  fireSpeed: 1000
+  fireSpeed: 700
   noInputCountdownMax: 0.25
   deadzone: 0.25
   maxTeleports: 3
@@ -2416,7 +2408,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.04}
+  m_Offset: {x: 0, y: -0.95}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2427,7 +2419,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.86, y: 0.79}
+  m_Size: {x: 0.83, y: 0.83}
   m_EdgeRadius: 0
 --- !u!50 &1567260123
 Rigidbody2D:
@@ -3064,8 +3056,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   countDownText: {fileID: 1858673442}
   matchTimerText: {fileID: 1131955201}
-  player1ScoreText: {fileID: 0}
-  player2ScoreText: {fileID: 0}
+  player1ScoreText: {fileID: 1422122510}
+  player2ScoreText: {fileID: 474384137}
 --- !u!4 &2019635526
 Transform:
   m_ObjectHideFlags: 0
