@@ -61,6 +61,14 @@ public class AimingFeedback : MonoBehaviour {
                 GetComponent<SpriteRenderer>().enabled = true;
                 float angle = Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg;
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                if ((angle>68 && angle<180) || (angle>=-180 && angle <-64))
+                {
+                    GetComponent<SpriteRenderer>().sortingOrder = transform.root.gameObject.GetComponent<SpriteRenderer>().sortingOrder - 1;
+                }
+                else
+                {
+                    GetComponent<SpriteRenderer>().sortingOrder = transform.root.gameObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                }
                 //transform.localPosition = crosshairPosition.normalized * magnification;
             }
         }

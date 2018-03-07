@@ -99,6 +99,14 @@ public class PlayerMovement : MonoBehaviour {
             float xAxis = -Input.GetAxis(v);
             float yAxis = Input.GetAxis(h);
             Accellerate(xAxis, yAxis); //call the movement function
+            if (rb.velocity.magnitude>0)
+            {
+                anim.SetBool("Moving", true);
+            }
+            else
+            {
+                anim.SetBool("Moving", false);
+            }
 
             if (Input.GetAxis(f1) != 0) //get input for shockwave attack from right trigger
             {
