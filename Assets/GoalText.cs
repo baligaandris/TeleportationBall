@@ -1,15 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GoalText : MonoBehaviour {
 
     public string text;
     public bool display = false;
     GUIStyle Font;
-    public float targetTime = 1.0f;
-    bool Var;
+    public float targetTime = 0.5f;
+    bool var;
 
+
+    public GameObject goalText;
     // Use this for initialization
     void Start()
     {
@@ -24,7 +27,7 @@ public class GoalText : MonoBehaviour {
     void Update()
     {
 
-        if (Var)
+        if (var)
         {
             targetTime -= Time.deltaTime;
 
@@ -41,30 +44,29 @@ public class GoalText : MonoBehaviour {
         if (Ball.gameObject.tag == "ball")
             {
 
-            display = true;
-            Var = true;
-            targetTime = 1.0f;
-
+            goalText.SetActive(true);
+            var = true;
         }
     }
 
     void timerEnded()
     {
 
-        display = false;
-
+        goalText.SetActive(false);
+        targetTime = 0.5f;
+        var = false;
     }
 
     void OnGUI()
     {
 
-        if (display == true)
+        //if (display == true)
 
-        {
+        //{
 
-            GUI.Label(new Rect(460, 80, 200, 80), text, Font);
+        //    GUI.Label(new Rect(460, 80, 200, 80), text, Font);
 
-        }
+        //}
 
     }
 }

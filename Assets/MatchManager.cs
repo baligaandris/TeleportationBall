@@ -49,15 +49,15 @@ public class MatchManager : MonoBehaviour {
             string countdownstr = Mathf.Floor(matchTimeLimit).ToString(); //spacing out the time display so it fits into the UI
             if (countdownstr.Length==3)
             {
-                matchTimerText.GetComponent<Text>().text = countdownstr[0] + "   " + countdownstr[1] + "  " + countdownstr[2];
+                matchTimerText.GetComponent<Text>().text = countdownstr[0] + "  " + countdownstr[1] + "  " + countdownstr[2];
             }
             else if (countdownstr.Length == 2)
             {
-                matchTimerText.GetComponent<Text>().text = "     " + countdownstr[0] + "  " + countdownstr[1];
+                matchTimerText.GetComponent<Text>().text = "    " + countdownstr[0] + "  " + countdownstr[1];
             }
             else if (countdownstr.Length == 1)
             {
-                matchTimerText.GetComponent<Text>().text = "        " + countdownstr[0];
+                matchTimerText.GetComponent<Text>().text = "       " + countdownstr[0];
             }
             
             // Determine which player has highest score when time equals 0
