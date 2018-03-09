@@ -33,7 +33,7 @@ public class PlayerMovement : MonoBehaviour {
     Color originalcolor;
 
     private Animator anim;
-    private bool getinput = true;
+    public bool getinput = true;
 
     private bool chargingPush = false;
     private float pushCharge = 0;

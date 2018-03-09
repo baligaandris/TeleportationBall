@@ -53,29 +53,34 @@ public class AimingFeedback : MonoBehaviour {
         //    GetComponent<SpriteRenderer>().enabled = false;
         //}
 
-        if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+        if (transform.root.gameObject.GetComponent<PlayerMovement>().getinput)
         {
-            Vector2 crosshairPosition = new Vector2(-Input.GetAxis(vAim), -Input.GetAxis(hAim));
-            if (crosshairPosition.magnitude > deadzone)
+            if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
             {
-                GetComponent<SpriteRenderer>().enabled = true;
-                float angle = Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                if ((angle>68 && angle<180) || (angle>=-180 && angle <-64))
+                Vector2 crosshairPosition = new Vector2(-Input.GetAxis(vAim), -Input.GetAxis(hAim));
+                if (crosshairPosition.magnitude > deadzone)
                 {
-                    GetComponent<SpriteRenderer>().sortingOrder = transform.root.gameObject.GetComponent<SpriteRenderer>().sortingOrder - 1;
+                    GetComponent<SpriteRenderer>().enabled = true;
+                    float angle = Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                    if ((angle > 68 && angle < 180) || (angle >= -180 && angle < -64))
+                    {
+                        GetComponent<SpriteRenderer>().sortingOrder = transform.root.gameObject.GetComponent<SpriteRenderer>().sortingOrder - 1;
+                    }
+                    else
+                    {
+                        GetComponent<SpriteRenderer>().sortingOrder = transform.root.gameObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
+                    }
+                    //transform.localPosition = crosshairPosition.normalized * magnification;
                 }
-                else
-                {
-                    GetComponent<SpriteRenderer>().sortingOrder = transform.root.gameObject.GetComponent<SpriteRenderer>().sortingOrder + 1;
-                }
-                //transform.localPosition = crosshairPosition.normalized * magnification;
             }
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().enabled = false;
-        }
+            else
+            {
+                GetComponent<SpriteRenderer>().enabled = false;
+            }
 
+        }
     }
+
+
 }
