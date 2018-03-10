@@ -6,6 +6,7 @@ public class Ball : MonoBehaviour
 {
 
     Vector2 defaultPos;
+    public AudioClip bounce;
 
     // Use this for initialization
     void Start()
@@ -21,12 +22,13 @@ public class Ball : MonoBehaviour
 
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    void OnCollisionEnter (Collision coll)
     {
 
         {
 
-            
+            AudioSource audio = GetComponent<AudioSource>();
+            audio.PlayOneShot(bounce);
 
         }
 

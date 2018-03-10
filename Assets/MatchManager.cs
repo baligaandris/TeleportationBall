@@ -18,14 +18,20 @@ public class MatchManager : MonoBehaviour {
 	float matchTimeLimit = 120;
     GameObject[] obstacles;
 
-	// Use this for initialization
-	void Start () {
+    public AudioSource timerSound;
+
+
+    // Use this for initialization
+    void Start () {
         player1 = GameObject.FindGameObjectWithTag("Player");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         ResetAfterGoal();
         player1ScoreText.text = player1Score.ToString();
         player2ScoreText.text = player2Score.ToString();
+
+        timerSound = GetComponent<AudioSource>();
+
     }
 
 	
@@ -59,6 +65,7 @@ public class MatchManager : MonoBehaviour {
             {
                 matchTimerText.GetComponent<Text>().text = "       " + countdownstr[0];
             }
+
             
             // Determine which player has highest score when time equals 0
             if (matchTimeLimit <= 0) 
@@ -76,7 +83,15 @@ public class MatchManager : MonoBehaviour {
                     Application.LoadLevel("Match Draw");
                 }
 			}
-		}
+
+            if (matchTimeLimit <= 10)
+            {
+
+                timerSound.Play();
+
+            }
+
+        }
 	}
     public void ResetAfterGoal() {
         countDownToMatch = 4;

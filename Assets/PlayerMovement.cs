@@ -22,6 +22,11 @@ public class PlayerMovement : MonoBehaviour {
 
     public float deadzone = 0.25f;
 
+    public AudioClip shockwave;
+    public AudioClip teleport;
+    public AudioClip shockwavecharge;
+    public AudioClip teleportcharge;
+
     //axes to use
     private string h;
     private string v;
@@ -46,6 +51,7 @@ public class PlayerMovement : MonoBehaviour {
     public Text teleportCounterUI;
     public float teleportWait = 1f;
     private RaycastHit2D hit;
+
 
     // Use this for initialization
     void Start() {
@@ -116,7 +122,8 @@ public class PlayerMovement : MonoBehaviour {
                     {
                         chargingPush = true;
                         pushCharge += Time.deltaTime;
-                        
+                        AudioSource audio = GetComponent<AudioSource>();
+                        audio.PlayOneShot(shockwavecharge);
                     }
                 }
             }
@@ -134,6 +141,8 @@ public class PlayerMovement : MonoBehaviour {
                     //canFire1 = false; //this is the same bool, that makes sure you don't fire a 1000 bullets a second
                     chargingPush = false;
                     pushCharge = 0;
+                    AudioSource audio = GetComponent<AudioSource>();
+                    audio.PlayOneShot(shockwave);
                 }
                 //canFire1 = true; //when the player releases the trigger they get back the ability to shoot
             }
@@ -221,7 +230,6 @@ public class PlayerMovement : MonoBehaviour {
             anim.SetFloat("y", -Input.GetAxis(vAim));
         }
 
-
     }
 
     void Accellerate(float x, float y) //this is the movement of the player
@@ -260,6 +268,10 @@ public class PlayerMovement : MonoBehaviour {
         transform.position = hit.collider.gameObject.transform.root.position;
         hit.collider.gameObject.transform.root.position = tempPos;
         GetComponent<LineRenderer>().enabled = false;
+        AudioSource audio = GetComponent<AudioSource>();
+        audio.PlayOneShot(teleport);
+ 
+       
     }
     private IEnumerator WaitAndTurnOffLineRenderer()
     {

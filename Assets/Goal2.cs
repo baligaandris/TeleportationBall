@@ -7,6 +7,7 @@ public class Goal2 : MonoBehaviour
     private float goalTime;
     public float goalTimeMax = 0.3f;
     private bool itIsGoalTime = false;
+    public AudioSource sound;
 
 
     public bool Goal1 = false;
@@ -16,6 +17,7 @@ public class Goal2 : MonoBehaviour
     void Start()
     {
         goalTime = goalTimeMax;
+        sound = GetComponent<AudioSource>();
         if (Goal1)
         {
             ui = GameObject.FindGameObjectWithTag("ui").GetComponent<UIManager>();
@@ -24,7 +26,7 @@ public class Goal2 : MonoBehaviour
         {
             ui = GameObject.FindGameObjectWithTag("ui2").GetComponent<UIManager>();
         }
-        
+
 
     }
 
@@ -63,6 +65,7 @@ public class Goal2 : MonoBehaviour
         {
             ui.IncrementScore();
             itIsGoalTime = true;
+            sound.Play();
         }
     }
 }
