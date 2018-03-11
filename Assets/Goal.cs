@@ -7,6 +7,7 @@ public class Goal : MonoBehaviour
     private float goalTime;
     public float goalTimeMax = 0.3f;
     private bool itIsGoalTime = false;
+    public AudioSource sound;
 
     public UIManager ui;
     // Use this for initialization
@@ -14,6 +15,7 @@ public class Goal : MonoBehaviour
     {
         goalTime = goalTimeMax;
         ui = GameObject.FindWithTag("ui").GetComponent<UIManager>();
+        sound = GetComponent<AudioSource>();
 
     }
 
@@ -51,6 +53,7 @@ public class Goal : MonoBehaviour
         {
             ui.IncrementScore();
             itIsGoalTime = true;
+            sound.Play();
         }
     }
 }
