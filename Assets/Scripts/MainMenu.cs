@@ -18,7 +18,11 @@ public class MainMenu : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		if (!FindObjectOfType<PersistentData>())
+        {
+            GameObject go = new GameObject("PData");
+            go.AddComponent<PersistentData>();
+        }
 	}
 	
 	// Update is called once per frame

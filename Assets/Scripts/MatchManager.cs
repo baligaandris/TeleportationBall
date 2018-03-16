@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MatchManager : MonoBehaviour {
@@ -39,7 +40,7 @@ public class MatchManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         // Initiate countdown sequence
-        print(timerSound.isPlaying);
+        //print(timerSound.isPlaying);
         if (matchStarted == false) 
 		{
 			countDownToMatch -= Time.deltaTime;
@@ -76,15 +77,18 @@ public class MatchManager : MonoBehaviour {
                 player2Score = GameObject.FindGameObjectWithTag("ui2").GetComponent<UIManager>().score2;
                 if (player1Score > player2Score)
 				{
-                    StartCoroutine(WaitAndLoadlevel("Player1Win"));
+                    FindObjectOfType<PersistentData>().m_winningPlayer = Players.Player1;
+                    StartCoroutine(WaitAndLoadlevel("EndScene"));
 				}
 				if (player2Score > player1Score)
 				{
-                    StartCoroutine(WaitAndLoadlevel("Player2Win"));
-				}
+                    FindObjectOfType<PersistentData>().m_winningPlayer = Players.Player2;
+                    StartCoroutine(WaitAndLoadlevel("EndScene"));
+                }
                 else if (player1Score == player2Score)
                 {
-                    StartCoroutine(WaitAndLoadlevel("Match Draw"));
+                    FindObjectOfType<PersistentData>().m_winningPlayer = Players.Draw;
+                    StartCoroutine(WaitAndLoadlevel("EndScene"));
                 }
 			}
 
@@ -138,6 +142,6 @@ public class MatchManager : MonoBehaviour {
     {
         timerSound.PlayOneShot(airHornSound);
         yield return new WaitForSeconds(airHornSound.length);
-        Application.LoadLevel(level);
+        SceneManager.LoadScene(level);
     }
 }

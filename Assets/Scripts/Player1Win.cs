@@ -1,24 +1,36 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Player1Win : MonoBehaviour {
-	public void RestartMatch()
+
+    private void Start()
+    {
+        Text txt = GameObject.Find("DisplayText").GetComponent<Text>();
+
+        switch(FindObjectOfType<PersistentData>().m_winningPlayer)
+        {
+            case Players.Draw:
+                txt.text = "Draw!";
+                break;
+
+            case Players.Player1:
+                txt.text = "Player 1 won";
+                break;
+
+            case Players.Player2:
+                txt.text = "Player 2 won";
+                break;
+        }
+    }
+
+    public void RestartMatch()
 	{
-		Application.LoadLevel ("Scene1");
+        SceneManager.LoadScene("Scene1");
+		
 	}
 	public void ReturnToMenu()
 	{
-		Application.LoadLevel ("MainMenu");
-	}
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        SceneManager.LoadScene("MainMenu");
 	}
 }
