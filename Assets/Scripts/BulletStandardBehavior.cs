@@ -7,6 +7,7 @@ public class BulletStandardBehavior : MonoBehaviour {
     public float bulletRange;
     private Vector3 startingPos;
     public float pushStrength;
+    public float pushPlayer = 5;
 	// Use this for initialization
 	void Start () {
         startingPos = transform.position; //save the starting position of the bullet to use in range calculation
@@ -30,15 +31,15 @@ public class BulletStandardBehavior : MonoBehaviour {
         {
             if (collision.gameObject.GetComponent<PlayerMovement>() != null)
             {
-                collision.gameObject.GetComponent<PlayerMovement>().SwitchInput(false);
+                collision.gameObject.GetComponent<PlayerMovement>().outsideForce += GetComponent<Rigidbody2D>().velocity.normalized* pushPlayer;
             }
             else
             {
-                collision.gameObject.transform.parent.GetComponent<PlayerMovement>().SwitchInput(false);
+                collision.gameObject.transform.parent.GetComponent<PlayerMovement>().outsideForce += GetComponent<Rigidbody2D>().velocity.normalized* pushPlayer;
             }
             
         }
-        if (collision.gameObject.transform.root.GetComponent<Rigidbody2D>() != null) //check if the bullet has collided with something, and if it did, and that something has a rigidbody, push it with a force proportional to it's distance from the player that fired it
+        else if (collision.gameObject.transform.root.GetComponent<Rigidbody2D>() != null) //check if the bullet has collided with something, and if it did, and that something has a rigidbody, push it with a force proportional to it's distance from the player that fired it
         {
             collision.gameObject.transform.root.GetComponent<Rigidbody2D>().AddForce(GetComponent<Rigidbody2D>().velocity.normalized * pushStrength );
         }

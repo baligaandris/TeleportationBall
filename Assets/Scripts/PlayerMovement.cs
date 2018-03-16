@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour {
     public AudioClip shockwavecharge;
     public AudioClip teleportcharge;
 
+    public Vector2 outsideForce = Vector2.zero;
 
     // Use this for initialization
     void Start() {
@@ -91,6 +92,10 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+        float xAxis = -Input.GetAxis(v);
+        float yAxis = Input.GetAxis(h);
+
+        Accellerate(xAxis, yAxis); //call the movement function
         //get input for movement
         if (GetComponent<LineRenderer>().enabled)
         {
@@ -109,10 +114,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (getinput)
         {
-            float xAxis = -Input.GetAxis(v);
-            float yAxis = Input.GetAxis(h);
 
-            Accellerate(xAxis, yAxis); //call the movement function
             if (rb.velocity.magnitude>0)
             {
                 anim.SetBool("Moving", true);
@@ -175,16 +177,21 @@ public class PlayerMovement : MonoBehaviour {
                         if (teleportsLeft>0)
                         {
                             canFire2 = true;
-                            //fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
-                            //GameObject newBullet = Instantiate(bullet2, wandEnd.transform.position, Quaternion.identity);
-                            //newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
-                            //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
-                            //Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), newBullet.GetComponent<Collider2D>());
-                            //newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
-                            //chargeTeleportTime = 0;
-                            //GetComponent<SpriteRenderer>().color = originalcolor;
-                           
+                        //fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                        //GameObject newBullet = Instantiate(bullet2, wandEnd.transform.position, Quaternion.identity);
+                        //newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
+                        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>());
+                        //Physics2D.IgnoreCollision(GetComponentInChildren<Collider2D>(), newBullet.GetComponent<Collider2D>());
+                        //newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed);
+                        //chargeTeleportTime = 0;
+                        //GetComponent<SpriteRenderer>().color = originalcolor;
+
+                        //fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                        if (fireVector==null)
+                        {
                             fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                        }
+                        fireVector = Vector2.Lerp(fireVector, new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized, 10*Time.deltaTime);
                             
                             hit = Physics2D.Raycast(wandEnd.transform.position, fireVector);
 
@@ -261,8 +268,8 @@ public class PlayerMovement : MonoBehaviour {
 
     void Accellerate(float x, float y) //this is the movement of the player
     {
-        rb.velocity = new Vector2(y,x).normalized*maxVelocity;
-        
+        rb.velocity = (new Vector2(y,x).normalized*maxVelocity)+outsideForce;
+        outsideForce = Vector2.ClampMagnitude(outsideForce,outsideForce.magnitude-1);
         //Vector2 force = new Vector2(0, 0);
         //if (new Vector2(x, y).magnitude > deadzone) // there is a deadzone on the controllers joysticks, if the input is in the dead zone, we ignore it
         //{

@@ -14,6 +14,8 @@ public class AimingFeedback : MonoBehaviour {
     private string f1;
     private string f2;
 
+    Vector2 crosshairPosition;
+
     // Use this for initialization
     void Start () {
         if (transform.parent.gameObject.tag == "Player") //check if the player that this is attached to is p1 or p2 and assign controls based on that
@@ -57,11 +59,17 @@ public class AimingFeedback : MonoBehaviour {
         {
             if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
             {
-                Vector2 crosshairPosition = new Vector2(-Input.GetAxis(vAim), -Input.GetAxis(hAim));
+                //new aiming code from here
+                if (crosshairPosition == null)
+                {
+                    crosshairPosition = new Vector2(Input.GetAxis(hAim), Input.GetAxis(vAim)).normalized;
+                }
+                crosshairPosition = Vector2.Lerp(crosshairPosition, new Vector2( -Input.GetAxis(vAim),Input.GetAxis(hAim)).normalized, 10 * Time.deltaTime);
+                //to here
                 if (crosshairPosition.magnitude > deadzone)
                 {
                     GetComponent<SpriteRenderer>().enabled = true;
-                    float angle = Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg;
+                    float angle = Mathf.Atan2(crosshairPosition.x, crosshairPosition.y) * Mathf.Rad2Deg;
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                     if ((angle > 68 && angle < 180) || (angle >= -180 && angle < -64))
                     {
