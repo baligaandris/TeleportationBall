@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 public class PlayerMovement : MonoBehaviour {
     Rigidbody2D rb;
@@ -60,6 +61,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public Vector2 outsideForce = Vector2.zero;
 
+    private PlayerIndex playerIndex;
+
     // Use this for initialization
     void Start() {
         audio = GetComponent<AudioSource>();
@@ -77,6 +80,7 @@ public class PlayerMovement : MonoBehaviour {
             vAim = "VerticalAim";
             f1 = "Fire1";
             f2 = "Fire2";
+            playerIndex = PlayerIndex.One;
         }
         if (gameObject.tag == "Player2")
         {
@@ -86,6 +90,7 @@ public class PlayerMovement : MonoBehaviour {
             vAim = "VerticalAim2";
             f1 = "Fire12";
             f2 = "Fire22";
+            playerIndex = PlayerIndex.Two;
         }
 
     }
@@ -132,6 +137,7 @@ public class PlayerMovement : MonoBehaviour {
                     {
                         chargingPush = true;
                         pushCharge += Time.deltaTime;
+                        GamePad.SetVibration(playerIndex, pushCharge* 0.5f, 0);
                         if (!audio.isPlaying)
                         {
                             audio.clip = shockwavecharge;
@@ -147,6 +153,7 @@ public class PlayerMovement : MonoBehaviour {
                 if (chargingPush)
                 {
                     audio.Stop();
+                    GamePad.SetVibration(playerIndex, 0, 0);
                     fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized; //get input for aiming
                     if (pushCharge>maxCharge)
                     {
@@ -177,6 +184,8 @@ public class PlayerMovement : MonoBehaviour {
                         if (teleportsLeft>0)
                         {
                             canFire2 = true;
+                        GamePad.SetVibration(playerIndex, 0, 0.25f);
+
                         //fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
                         //GameObject newBullet = Instantiate(bullet2, wandEnd.transform.position, Quaternion.identity);
                         //newBullet.GetComponent<BulletSwitchBehavior>().SetWhoFiredMe(gameObject);
@@ -218,6 +227,7 @@ public class PlayerMovement : MonoBehaviour {
                 
                 if (canFire2)
                 {
+                    GamePad.SetVibration(playerIndex, 0, 0);
                     audio.Stop();
                     teleportsLeft--;
                     teleportCounterUI.GetComponent<Text>().text = teleportsLeft.ToString();
@@ -315,5 +325,8 @@ public class PlayerMovement : MonoBehaviour {
 
     public void StopTeleportation() {
         StopAllCoroutines();
+    }
+    public int GetTeleportsLeft() {
+        return teleportsLeft;
     }
 }
