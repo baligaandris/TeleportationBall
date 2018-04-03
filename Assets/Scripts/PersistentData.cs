@@ -11,9 +11,13 @@ public class PersistentData : MonoBehaviour {
 
     #endregion
 
+    public string player1Name = "";
+    public string player2Name = "";
+
     void Start ()
     {
-        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this);
+
 	}
 	
 	// Update is called once per frame

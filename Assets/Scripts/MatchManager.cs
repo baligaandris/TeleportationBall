@@ -31,6 +31,13 @@ public class MatchManager : MonoBehaviour {
         ResetAfterGoal();
         player1ScoreText.text = player1Score.ToString();
         player2ScoreText.text = player2Score.ToString();
+        GameObject gameData = GameObject.Find("PersistentData");
+        if (gameData != null)
+        {
+            PersistentData persistentData = gameData.GetComponent<PersistentData>();
+            player1ScoreText.text = persistentData + player1Score.ToString();
+            player2ScoreText.text = persistentData + player2Score.ToString();
+        }
 
         timerSound = GetComponent<AudioSource>();
 
