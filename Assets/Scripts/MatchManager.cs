@@ -19,12 +19,16 @@ public class MatchManager : MonoBehaviour {
 	public float matchTimeLimit = 120;
     GameObject[] obstacles;
 
+    PersistentData persistentData;
+
     public AudioSource timerSound;
     public AudioClip airHornSound;
 
     // Use this for initialization
     void Start () {
-        Time.timeScale = 1; 
+        persistentData = FindObjectOfType<PersistentData>();
+        Time.timeScale = 1;
+        Time.fixedDeltaTime = 0.02F * Time.timeScale;
         player1 = GameObject.FindGameObjectWithTag("Player");
         player2 = GameObject.FindGameObjectWithTag("Player2");
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
@@ -84,18 +88,39 @@ public class MatchManager : MonoBehaviour {
                 player2Score = GameObject.FindGameObjectWithTag("ui2").GetComponent<UIManager>().score2;
                 if (player1Score > player2Score)
 				{
-                    FindObjectOfType<PersistentData>().m_winningPlayer = Players.Player1;
-                    StartCoroutine(WaitAndLoadlevel("EndScene"));
+                    persistentData.winningPlayer = Players.Player1;
+                    if (persistentData.WinnerStaysOnMode)
+                    {
+                        StartCoroutine(WaitAndLoadlevel("WinnerStaysOnMenu"));
+                    }
+                    else {
+                        StartCoroutine(WaitAndLoadlevel("EndScene"));
+                    }
+
 				}
 				if (player2Score > player1Score)
 				{
-                    FindObjectOfType<PersistentData>().m_winningPlayer = Players.Player2;
-                    StartCoroutine(WaitAndLoadlevel("EndScene"));
+                    FindObjectOfType<PersistentData>().winningPlayer = Players.Player2;
+                    if (persistentData.WinnerStaysOnMode)
+                    {
+                        StartCoroutine(WaitAndLoadlevel("WinnerStaysOnMenu"));
+                    }
+                    else
+                    {
+                        StartCoroutine(WaitAndLoadlevel("EndScene"));
+                    }
                 }
                 else if (player1Score == player2Score)
                 {
-                    FindObjectOfType<PersistentData>().m_winningPlayer = Players.Draw;
-                    StartCoroutine(WaitAndLoadlevel("EndScene"));
+                    FindObjectOfType<PersistentData>().winningPlayer = Players.Draw;
+                    if (persistentData.WinnerStaysOnMode)
+                    {
+                        StartCoroutine(WaitAndLoadlevel("WinnerStaysOnMenu"));
+                    }
+                    else
+                    {
+                        StartCoroutine(WaitAndLoadlevel("EndScene"));
+                    }
                 }
 			}
 

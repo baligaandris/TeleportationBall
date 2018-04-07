@@ -19,7 +19,7 @@ public class Player1Win : MonoBehaviour {
             nameText = persistentData.player2Name;
         }
 
-        switch (FindObjectOfType<PersistentData>().m_winningPlayer)
+        switch (FindObjectOfType<PersistentData>().winningPlayer)
         {
             case Players.Draw:
                 txt.text = "Draw!";

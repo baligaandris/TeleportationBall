@@ -231,11 +231,15 @@ public class PlayerMovement : MonoBehaviour {
                     audio.Stop();
                     teleportsLeft--;
                     teleportCounterUI.GetComponent<Text>().text = teleportsLeft.ToString();
+                    
                     if (hit.collider != null)
                     {
                         if (hit.collider.gameObject.tag != "Immovable" && hit.collider.gameObject.tag != "Goal") //when colliding with something that is not immovable switch its position with the player's, and the destroy self.
                         {
+                            GetComponentInChildren<TeleportAnimLayer>().PlayAnim();
+                            hit.collider.gameObject.transform.root.gameObject.GetComponentInChildren<TeleportAnimLayer>().PlayAnim();
                             StartCoroutine(WaitAndTeleport(hit));
+
                         }
                         else
                         {
@@ -313,9 +317,9 @@ public class PlayerMovement : MonoBehaviour {
         transform.position = hit.collider.gameObject.transform.root.position;
         hit.collider.gameObject.transform.root.position = tempPos;
         GetComponent<LineRenderer>().enabled = false;
+        GetComponentInChildren<TeleportAnimLayer>().EndAnim();
+        hit.collider.gameObject.transform.root.gameObject.GetComponentInChildren<TeleportAnimLayer>().EndAnim();
 
- 
-       
     }
     private IEnumerator WaitAndTurnOffLineRenderer()
     {

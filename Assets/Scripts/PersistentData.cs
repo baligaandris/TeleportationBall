@@ -7,7 +7,13 @@ public class PersistentData : MonoBehaviour {
 
     #region member variables
 
-    public Players m_winningPlayer = Players.Player1;
+    public Players winningPlayer = Players.Draw;
+    public Players champion = Players.Draw;
+    public int streak = 0;
+    public int nextLevel = -1;
+
+    public bool WinnerStaysOnMode = false;
+    public bool firstMatch = true;
 
     #endregion
 

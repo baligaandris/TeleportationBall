@@ -2,17 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour {
 
-    string nameText = "";
+    PersistentData persistentData;
 
 	public void LoadMainLevel()
 	{
-		Application.LoadLevel ("Scene1");
+        SceneManager.LoadScene("Scene1");
 	}
 
-	public void QuitGame()
+    public void LoadWinnerStaysMenu() {
+        persistentData.WinnerStaysOnMode = true;
+        SceneManager.LoadScene("WinnerStaysOnMenu");
+    }
+
+    public void LoadMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void QuitGame()
 	{
 		Application.Quit ();
 	}
@@ -24,23 +35,21 @@ public class MainMenu : MonoBehaviour {
         {
             GameObject go = new GameObject("PData");
             go.AddComponent<PersistentData>();
+            persistentData = go.GetComponent<PersistentData>();
         }
-        // Store player names (do this for every scene except for end scene where a name change will take place depending on match result)
-        GameObject gameData = GameObject.Find("PersistentData");
-        if (gameData != null)
-        {
-            PersistentData persistentData = gameData.GetComponent<PersistentData>();
-            nameText = persistentData.player1Name;
-            nameText = persistentData.player2Name;
-        }
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-    public void SetName(string name)
+    public void SetNameOfPlayer1(string name)
     {
-        nameText = name;
+        persistentData.player1Name = name;
+    }
+    public void SetNameOfPlayer2(string name)
+    {
+        persistentData.player2Name = name;
     }
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour {
 
@@ -11,9 +12,11 @@ public class UIManager : MonoBehaviour {
 
     public AudioClip airHornSound;
 
+    PersistentData persistentData;
+
     // Use this for initialization
     void Start () {
-
+        persistentData = FindObjectOfType<PersistentData>();
        
 
 	}
@@ -31,7 +34,15 @@ public class UIManager : MonoBehaviour {
             scoreText.text = "" + score1;
             if (score1 >= 5)
             {
-                Application.LoadLevel(("Player1Win"));
+                persistentData.winningPlayer = Players.Player1;
+                if (persistentData.WinnerStaysOnMode)
+                {
+                    SceneManager.LoadScene("WinnerStaysOnMenu");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndScene");
+                }
             }
         }
         if (gameObject.tag=="ui2")
@@ -40,7 +51,15 @@ public class UIManager : MonoBehaviour {
             scoreText.text = "" + score2;
             if (score2 >= 5)
             {
-                Application.LoadLevel(("Player2Win"));
+                persistentData.winningPlayer = Players.Player2;
+                if (persistentData.WinnerStaysOnMode)
+                {
+                    SceneManager.LoadScene("WinnerStaysOnMenu");
+                }
+                else
+                {
+                    SceneManager.LoadScene("EndScene");
+                }
             }
         }
 

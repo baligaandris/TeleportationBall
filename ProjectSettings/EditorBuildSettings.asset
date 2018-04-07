@@ -12,11 +12,17 @@ EditorBuildSettings:
     path: Assets/Main Menu.unity
     guid: fa2c68596ce30ff46addd76a62df029d
   - enabled: 1
-    path: Assets/Player1Win.unity
+    path: Assets/EndScene.unity
     guid: 60c91d5acfc407f4489795294e55275a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Player2Win.unity
     guid: b2ec1460209b3b742aa5cada6d118857
-  - enabled: 1
+  - enabled: 0
     path: Assets/Match Draw.unity
     guid: 5672e85b1ca37b647a325ea96c5a6325
+  - enabled: 1
+    path: Assets/WinnerStaysOnMenu.unity
+    guid: 3bbbae3660e5c394f877bd82b1ca123a
+  - enabled: 1
+    path: Assets/Scene2.unity
+    guid: a181397ea79e013448324928c8bbf114
