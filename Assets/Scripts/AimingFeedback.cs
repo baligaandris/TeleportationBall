@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XInputDotNetPure;
 
 public class AimingFeedback : MonoBehaviour {
     public float deadzone = 0.25f;
@@ -16,6 +17,10 @@ public class AimingFeedback : MonoBehaviour {
 
     Vector2 crosshairPosition;
 
+    //xinput   
+    PlayerIndex playerIndex;
+    GamePadState padState;
+
     // Use this for initialization
     void Start () {
         if (transform.parent.gameObject.tag == "Player") //check if the player that this is attached to is p1 or p2 and assign controls based on that
@@ -26,6 +31,8 @@ public class AimingFeedback : MonoBehaviour {
             vAim = "VerticalAim";
             f1 = "Fire1";
             f2 = "Fire2";
+
+            playerIndex = PlayerIndex.One;
         }
         if (transform.parent.gameObject.tag == "Player2")
         {
@@ -35,12 +42,13 @@ public class AimingFeedback : MonoBehaviour {
             vAim = "VerticalAim2";
             f1 = "Fire12";
             f2 = "Fire22";
+            playerIndex = PlayerIndex.Two;
         }
     }
 	
 	// Update is called once per frame
 	void Update () {
-
+        padState = GamePad.GetState(playerIndex);
         //if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
         //{
         //    Vector2 crosshairPosition = new Vector2(-Input.GetAxis(vAim), -Input.GetAxis(hAim));
@@ -57,14 +65,14 @@ public class AimingFeedback : MonoBehaviour {
 
         if (transform.root.gameObject.GetComponent<PlayerMovement>().getinput)
         {
-            if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+            if (padState.ThumbSticks.Right.X != 0 || padState.ThumbSticks.Right.Y != 0)
             {
                 //new aiming code from here
                 if (crosshairPosition == null)
                 {
-                    crosshairPosition = new Vector2(Input.GetAxis(hAim), Input.GetAxis(vAim)).normalized;
+                    crosshairPosition = new Vector2(padState.ThumbSticks.Right.X, padState.ThumbSticks.Right.Y).normalized;
                 }
-                crosshairPosition = Vector2.Lerp(crosshairPosition, new Vector2( -Input.GetAxis(vAim),Input.GetAxis(hAim)).normalized, 10 * Time.deltaTime);
+                crosshairPosition = Vector2.Lerp(crosshairPosition, new Vector2( padState.ThumbSticks.Right.Y, padState.ThumbSticks.Right.X).normalized, 10 * Time.deltaTime);
                 //to here
                 if (crosshairPosition.magnitude > deadzone)
                 {

@@ -61,7 +61,12 @@ public class PlayerMovement : MonoBehaviour {
 
     public Vector2 outsideForce = Vector2.zero;
 
+
+
+    //Xinput
+
     private PlayerIndex playerIndex;
+    private GamePadState padState;
 
     // Use this for initialization
     void Start() {
@@ -81,6 +86,7 @@ public class PlayerMovement : MonoBehaviour {
             f1 = "Fire1";
             f2 = "Fire2";
             playerIndex = PlayerIndex.One;
+
         }
         if (gameObject.tag == "Player2")
         {
@@ -97,8 +103,11 @@ public class PlayerMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        float xAxis = -Input.GetAxis(v);
-        float yAxis = Input.GetAxis(h);
+        padState = GamePad.GetState(playerIndex);
+
+
+        float yAxis = padState.ThumbSticks.Left.X;
+        float xAxis = padState.ThumbSticks.Left.Y;
 
         Accellerate(xAxis, yAxis); //call the movement function
         //get input for movement
@@ -129,11 +138,11 @@ public class PlayerMovement : MonoBehaviour {
                 anim.SetBool("Moving", false);
             }
 
-            if (Input.GetAxis(f1) != 0) //get input for shockwave attack from right trigger
+            if (padState.Triggers.Right!=0) //get input for shockwave attack from right trigger
             {
                 if (canFire1) // since the trigger doesn't have a "getbuttondown" because it is an axis this bool takes care of only fireing it once when the trigger is pulled
                 {
-                    if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
+                    if (padState.ThumbSticks.Right.X != 0 || padState.ThumbSticks.Right.Y != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
                     {
                         chargingPush = true;
                         pushCharge += Time.deltaTime;
@@ -154,12 +163,12 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     audio.Stop();
                     GamePad.SetVibration(playerIndex, 0, 0);
-                    fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized; //get input for aiming
+                    fireVector = new Vector2(padState.ThumbSticks.Right.X, padState.ThumbSticks.Right.Y).normalized; //get input for aiming
                     if (pushCharge>maxCharge)
                     {
                         pushCharge = maxCharge;
                     }
-                    GameObject newBullet = Instantiate(bullet, wandEnd.transform.position, Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan2(-Input.GetAxis(vAim), Input.GetAxis(hAim)) * Mathf.Rad2Deg)/* - 90*/))); //instantiate bullet/shockwave
+                    GameObject newBullet = Instantiate(bullet, wandEnd.transform.position, Quaternion.Euler(new Vector3(0, 0, (Mathf.Atan2(padState.ThumbSticks.Right.Y, padState.ThumbSticks.Right.X) * Mathf.Rad2Deg)/* - 90*/))); //instantiate bullet/shockwave
                     Physics2D.IgnoreCollision(GetComponent<Collider2D>(), newBullet.GetComponent<Collider2D>()); // this is to make sure you are not pushed around by your own bullet/shockwave
                     newBullet.GetComponent<Rigidbody2D>().AddForce(fireVector * fireSpeed); //add force to the bullet in the direction of your aim
                     newBullet.GetComponent<BulletStandardBehavior>().SetMaxRagne(pushCharge);
@@ -173,13 +182,13 @@ public class PlayerMovement : MonoBehaviour {
                 }
                 //canFire1 = true; //when the player releases the trigger they get back the ability to shoot
             }
-            if (Input.GetAxis(f2) != 0) //same thing for the other projectile, you get the idea
+            if (padState.Triggers.Left != 0) //same thing for the other projectile, you get the idea
             {
                 //chargeTeleportTime += Time.deltaTime;
                 //GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color, Color.black, 0.02f);
                 //if (chargeTeleportTime >= 0)
 
-                    if (Input.GetAxis(hAim) != 0 || Input.GetAxis(vAim) != 0)
+                    if (padState.ThumbSticks.Right.X != 0 || padState.ThumbSticks.Right.Y != 0)
                     {
                         if (teleportsLeft>0)
                         {
@@ -198,9 +207,9 @@ public class PlayerMovement : MonoBehaviour {
                         //fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
                         if (fireVector==null)
                         {
-                            fireVector = new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized;
+                            fireVector = new Vector2(padState.ThumbSticks.Right.X, padState.ThumbSticks.Right.Y).normalized;
                         }
-                        fireVector = Vector2.Lerp(fireVector, new Vector2(Input.GetAxis(hAim), -Input.GetAxis(vAim)).normalized, 10*Time.deltaTime);
+                        fireVector = Vector2.Lerp(fireVector, new Vector2(padState.ThumbSticks.Right.X, padState.ThumbSticks.Right.Y).normalized, 10*Time.deltaTime);
                             
                             hit = Physics2D.Raycast(wandEnd.transform.position, fireVector);
 
@@ -264,18 +273,18 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
         
-        if (Input.GetAxis(hAim) ==0 && Input.GetAxis(vAim)==0)
+        if (padState.ThumbSticks.Right.X ==0 && padState.ThumbSticks.Right.Y == 0)
         {
             anim.SetBool("Aiming", false);
-            anim.SetFloat("x", Input.GetAxis(h));
-            anim.SetFloat("y", -Input.GetAxis(v));
+            anim.SetFloat("x", padState.ThumbSticks.Left.X);
+            anim.SetFloat("y", padState.ThumbSticks.Left.Y);
         }
         else
         {
             //rotate according to aiming
             anim.SetBool("Aiming", true);
-            anim.SetFloat("x", Input.GetAxis(hAim));
-            anim.SetFloat("y", -Input.GetAxis(vAim));
+            anim.SetFloat("x", padState.ThumbSticks.Right.X);
+            anim.SetFloat("y", padState.ThumbSticks.Right.Y);
         }
 
     }
