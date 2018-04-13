@@ -50,7 +50,7 @@ public class PlayerMovement : MonoBehaviour {
     public Text teleportCounterUI;
     public float teleportWait = 1f;
     private RaycastHit2D hit;
-
+    public GameObject chargingAnimationObject;
 
     //audio
     AudioSource audio;
@@ -144,6 +144,7 @@ public class PlayerMovement : MonoBehaviour {
                 {
                     if (padState.ThumbSticks.Right.X != 0 || padState.ThumbSticks.Right.Y != 0) //this is to make sure you don't fire a shockwave when you are not aiming anywhere
                     {
+                        chargingAnimationObject.SetActive(true);
                         chargingPush = true;
                         pushCharge += Time.deltaTime;
                         GamePad.SetVibration(playerIndex, pushCharge* 0.5f, 0);
@@ -161,6 +162,7 @@ public class PlayerMovement : MonoBehaviour {
             {
                 if (chargingPush)
                 {
+                    chargingAnimationObject.SetActive(false);
                     audio.Stop();
                     GamePad.SetVibration(playerIndex, 0, 0);
                     fireVector = new Vector2(padState.ThumbSticks.Right.X, padState.ThumbSticks.Right.Y).normalized; //get input for aiming

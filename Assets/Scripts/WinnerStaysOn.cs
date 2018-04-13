@@ -77,6 +77,6 @@ public class WinnerStaysOn : MonoBehaviour {
     }
 
     public void LoadMainMenu() {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
 }

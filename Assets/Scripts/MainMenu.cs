@@ -8,9 +8,9 @@ public class MainMenu : MonoBehaviour {
 
     PersistentData persistentData;
 
-	public void LoadMainLevel()
+	public void LoadLevelSelecter()
 	{
-        SceneManager.LoadScene("Scene1");
+        SceneManager.LoadScene("LevelSelecter");
 	}
 
     public void LoadWinnerStaysMenu() {
@@ -37,7 +37,11 @@ public class MainMenu : MonoBehaviour {
             go.AddComponent<PersistentData>();
             persistentData = go.GetComponent<PersistentData>();
         }
-
+        else
+        {
+            persistentData = FindObjectOfType<PersistentData>();
+        }
+        persistentData.WinnerStaysOnMode = false;
 	}
 	
 	// Update is called once per frame

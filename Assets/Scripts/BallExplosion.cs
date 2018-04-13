@@ -8,6 +8,7 @@ public class BallExplosion : MonoBehaviour {
     public List<GameObject> nearbyObjects;
     public float pushStrength = 10f;
     public float pushPlayer = 15f;
+    public float chargeTime = 2.5f;
     Color originalColor;
     // Use this for initialization
     void Start () {
@@ -19,8 +20,9 @@ public class BallExplosion : MonoBehaviour {
         if (playersAround==2)
         {
             charge += Time.deltaTime;
-            GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color,Color.red,0.5f*Time.deltaTime);
-            if (charge>=3)
+            //GetComponent<SpriteRenderer>().color = Color.Lerp(GetComponent<SpriteRenderer>().color,Color.red,0.5f*Time.deltaTime);
+            GetComponent<Animator>().SetBool("charging", true);
+            if (charge>= chargeTime)
             {
                 print("pusingAway");
                 for (int i = 0; i < nearbyObjects.Count; i++)
@@ -41,16 +43,16 @@ public class BallExplosion : MonoBehaviour {
                     {
                         nearbyObjects[i].gameObject.transform.root.GetComponent<Rigidbody2D>().AddForce((nearbyObjects[i].transform.position - transform.position)*pushStrength);
                     }
-                                        
+                    GetComponent<Animator>().SetBool("charging", false);
                 }
                 charge = 0;
-                GetComponent<SpriteRenderer>().color = originalColor;
+                //GetComponent<SpriteRenderer>().color = originalColor;
             }
         } else
         {
             charge = 0;
-            GetComponent<SpriteRenderer>().color = originalColor;
-
+            //GetComponent<SpriteRenderer>().color = originalColor;
+            GetComponent<Animator>().SetBool("charging", false);
         }
     }
 }
