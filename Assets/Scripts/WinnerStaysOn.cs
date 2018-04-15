@@ -25,7 +25,7 @@ public class WinnerStaysOn : MonoBehaviour {
             persistentData.firstMatch = false;
         }
         else {
-            winnerText.enabled = true;
+            //winnerText.enabled = true;
 
         }
         if (persistentData.winningPlayer == Players.Draw && persistentData.champion == Players.Draw)
