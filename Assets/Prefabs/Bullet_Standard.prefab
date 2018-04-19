@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletRange: 2
-  pushStrength: 300
+  pushStrength: 80
   pushPlayer: 5
 --- !u!212 &212057532215549570
 SpriteRenderer:

@@ -843,8 +843,9 @@ MonoBehaviour:
   canFire2: 0
   noInputCountdownMax: 0.25
   deadzone: 0.25
+  pushChargeMultiplier: 1.4
   getinput: 0
-  maxCharge: 4
+  maxCharge: 5
   teleportsLeft: 0
   maxTeleports: 3
   teleportChargingMax: 2

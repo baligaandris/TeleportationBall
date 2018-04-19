@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public float deadzone = 0.25f;
 
-
+    public float pushChargeMultiplier = 1;
 
     //axes to use
     private string h;
@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour {
                     {
                         chargingAnimationObject.SetActive(true);
                         chargingPush = true;
-                        pushCharge += Time.deltaTime;
+                        pushCharge += Time.deltaTime*pushChargeMultiplier;
                         GamePad.SetVibration(playerIndex, pushCharge* 0.5f, 0);
                         if (!audio.isPlaying)
                         {

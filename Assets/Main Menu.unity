@@ -160,7 +160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.61764705, g: 0.3717724, b: 0.15547666, a: 1}
+  m_Color: {r: 0.859, g: 0.631877, b: 0.43207702, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -180,7 +180,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Tournament of \nMagic"
+  m_Text: "Tournament \nof \nMagic"
 --- !u!222 &13657490
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1084,7 +1084,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Practice
 
-    match'
+    Match'
 --- !u!222 &1660940355
 CanvasRenderer:
   m_ObjectHideFlags: 0
