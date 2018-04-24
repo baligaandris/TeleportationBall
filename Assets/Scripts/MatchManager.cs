@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using XInputDotNetPure;
 
 public class MatchManager : MonoBehaviour {
 
@@ -24,10 +25,12 @@ public class MatchManager : MonoBehaviour {
     public AudioSource timerSound;
     public AudioClip airHornSound;
 
+    public Canvas tutorialCanvas;
+
     // Use this for initialization
     void Start () {
         persistentData = FindObjectOfType<PersistentData>();
-        Time.timeScale = 1;
+        Time.timeScale = 0;
         Time.fixedDeltaTime = 0.02F * Time.timeScale;
         player1 = GameObject.FindGameObjectWithTag("Player");
         player2 = GameObject.FindGameObjectWithTag("Player2");
@@ -50,6 +53,17 @@ public class MatchManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (Time.timeScale == 0)
+        {
+            GamePadState state1 = GamePad.GetState(PlayerIndex.One);
+            GamePadState state2 = GamePad.GetState(PlayerIndex.Two);
+            if (state1.Triggers.Right == 1 && state2.Triggers.Right ==1)
+            {
+                Time.timeScale = 1;
+                Time.fixedDeltaTime = 0.02F * Time.timeScale;
+                tutorialCanvas.enabled = false;
+            }
+        }
         // Initiate countdown sequence
         //print(timerSound.isPlaying);
         if (matchStarted == false) 

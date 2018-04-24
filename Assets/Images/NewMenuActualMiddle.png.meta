@@ -1,14 +1,10 @@
 fileFormatVersion: 2
-guid: f6265ff58a56e08448c009f10f7475b3
-timeCreated: 1524566421
+guid: ff6f48160ff51d54da88341aa391c1e7
+timeCreated: 1524568083
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: scoresprite_0
-    21300002: scoresprite_1
-    21300004: scoresprite_2
-    21300006: scoresprite_3
-    21300008: scoresprite_4
+    21300000: NewMenuActualMiddle_0
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -50,7 +46,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteBorder: {x: 766, y: 417, z: 675, w: 495}
   spritePixelsToUnits: 100
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -95,71 +91,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scoresprite_0
+      name: NewMenuActualMiddle_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 380
-        width: 372
-        height: 319
+        x: 763
+        y: 415
+        width: 486
+        height: 169
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scoresprite_1
-      rect:
-        serializedVersion: 2
-        x: 384
-        y: 378
-        width: 372
-        height: 319
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scoresprite_2
-      rect:
-        serializedVersion: 2
-        x: 768
-        y: 377
-        width: 372
-        height: 319
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scoresprite_3
-      rect:
-        serializedVersion: 2
-        x: 1152
-        y: 377
-        width: 372
-        height: 319
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: scoresprite_4
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 374
-        width: 372
-        height: 319
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

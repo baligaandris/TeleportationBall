@@ -11,6 +11,6 @@ public class ManageLayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-transform.position.y);
+        GetComponent<SpriteRenderer>().sortingOrder = Mathf.RoundToInt(-transform.position.y+GetComponent<SpriteRenderer>().size.y);
 	}
 }

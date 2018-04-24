@@ -1,14 +1,30 @@
 fileFormatVersion: 2
-guid: f6265ff58a56e08448c009f10f7475b3
-timeCreated: 1524566421
+guid: e7edf139a0c015a4b880bea4cbba4696
+timeCreated: 1524581075
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: scoresprite_0
-    21300002: scoresprite_1
-    21300004: scoresprite_2
-    21300006: scoresprite_3
-    21300008: scoresprite_4
+    21300000: 2
+    21300002: 3
+    21300004: 5
+    21300006: 6
+    21300008: 7
+    21300010: 1
+    21300012: 4
+    21300014: newcrystalsprite_12
+    21300016: 2
+    21300018: 3
+    21300020: newcrystalsprite_2
+    21300022: newcrystalsprite_3
+    21300024: 5
+    21300026: 6
+    21300028: 7
+    21300030: 1
+    21300032: 4
+    21300034: newcrystalsprite_9
+    21300036: newcrystalsprite_10
+    21300038: newcrystalsprite_11
+    21300040: newcrystalsprite_13
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -95,13 +111,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: scoresprite_0
+      name: 2
       rect:
         serializedVersion: 2
-        x: 0
-        y: 380
-        width: 372
-        height: 319
+        x: 477
+        y: 472
+        width: 142
+        height: 176
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -109,13 +125,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scoresprite_1
+      name: 3
       rect:
         serializedVersion: 2
-        x: 384
-        y: 378
-        width: 372
-        height: 319
+        x: 661
+        y: 472
+        width: 141
+        height: 175
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -123,13 +139,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scoresprite_2
+      name: 5
       rect:
         serializedVersion: 2
-        x: 768
-        y: 377
-        width: 372
-        height: 319
+        x: 1054
+        y: 472
+        width: 141
+        height: 175
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,13 +153,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scoresprite_3
+      name: 6
       rect:
         serializedVersion: 2
-        x: 1152
-        y: 377
-        width: 372
-        height: 319
+        x: 1238
+        y: 472
+        width: 141
+        height: 176
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,13 +167,55 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: scoresprite_4
+      name: 7
       rect:
         serializedVersion: 2
-        x: 1536
-        y: 374
-        width: 372
-        height: 319
+        x: 1442
+        y: 478
+        width: 142
+        height: 176
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 1
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 469
+        width: 142
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: 4
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 470
+        width: 141
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: newcrystalsprite_13
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 537
+        width: 4
+        height: 8
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
